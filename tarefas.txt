@@ -1,0 +1,5 @@
+Criar assistente para despesas e receitas simples e parceladas para simplificar
+Criar para notificação uma possibilidade do cadastro que usa inserir qual evento gera a notificação.
+	ex.:  Contas
+		Notificação: Enviar um email quando a conta ficar negativa.
+
