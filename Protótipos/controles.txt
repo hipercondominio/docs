@@ -1,0 +1,106 @@
+* Eventos:
+	Mouse: 
+		click: clique.
+		doubleClick: clique duplo.
+		hold: clicar e segurar.
+		move: mover o mouse em cima.
+	Teclado:
+
+	
+	
+CONTROLES
+
+Input 
+	* Descrição: Equivale ao 'INPUT' do Html. Identico ao Html, adicionado dos recursos abaixo.
+	* Pai: Container.
+	* Filhos: Ausente.
+	* Propriedades:
+		mask: uma máscara de entrada, formato de dados.
+		chars: uma expressão regular caracteres válidos.
+		align[*left, right]: alinhamento do texto.
+	* Métodos:
+	* Eventos:
+		
+Group 
+	* Descrição: Agrupador de campos.
+	* Pai: Container.
+	* Filhos: Vários.
+	* Propriedades:
+		state
+			1: aberto.
+			0: fechado.
+	* Métodos:
+		toggle(): altera entre abertura e fechamento.
+	* Eventos:
+		click: gera método toggle().
+
+Label
+	* Descrição: Título de campo.
+	* Pai: Container.
+	* Filhos: Ausente.
+	* Propriedades:
+		related: controle de iteração do usuário.
+		text: valor do campo.
+		abbr: abreviatura. //todo:revisar tamanho mínimo para usar abreviatura.
+		help: texto de ajuda quando usuário passa o mouse em cima.
+	* Métodos:
+		openHelp(): abre a ajuda no maior espaço disponível, preferencialmente na ordem horária.
+	* Eventos:
+		move: gera método toggle().
+
+Button
+	* Descrição: Equivale ao 'BUTTON' do Html. Identico ao Html, adicionado dos recursos abaixo.
+	* Pai: Container.
+	* Filhos: Icon, Text.
+	* Propriedades:
+	* Eventos:
+
+Entries
+	* Descrição: Um grupo de opções já selecionadas pelo cliente.
+	* Pai: Container.
+	* Filhos: Entry.
+	* Propriedades:
+		name: nome do controle, usado para gerar o json de dados.
+		display: texto que vai ser exibido, representando os itens selecionados, ex.: Mandar ${email} ${dias} antes do evento. Onde os valores em chaves são nomes de campos.
+	* Métodos:
+		add(): adiciona um novo item de acordo com o template.
+	* Eventos:
+
+Entry
+	* Descrição: Uma opção dentro de uma lista de opções.
+	* Pai: Entries.
+	* Filhos: Vários.
+	* Propriedades:
+		template[*0,1]: determina se o item é um template de entrada. O primeiro item é sempre o template.
+		disabled[*0, 1]: determina se o usuário pode iteragir com o controle.
+	* Métodos:
+		remove(): retira o item atual.
+		edit(): inicia alteração do item.
+		complete(): termina a edição do item.
+	* Eventos:
+		click: ao clicar no icone de remoção dispara o método 'remove'.
+		doubleClick,hold: no item, dipara o método 'edit'.
+		key ESC: dispara o método 'cancel'.
+
+Radio
+	* Descrição: Equivale ao 'INPUT[type=radio]' do html. Identico ao Html, adicionado dos recursos abaixo.
+	* Pai: Container.
+	* Filhos: Ausente.
+	* Propriedades:
+	* Métodos:
+	* Eventos:
+
+Select
+	* Descrição: Equivale ao 'SELECT' do html. Identico ao Html, adicionado dos recursos abaixo.
+	* Pai: Container.
+	* Filhos: Option.
+	* Propriedades:
+		required: força a criação de uma opção 'selecione', obrigando o usuário a trocar.
+		insert[*0,1]: determina se o usuário pode incluir novas opções.  //todo: e como o cadastro pode validar os dados?
+		hide[*0,1]: determina se o select vai se parecer com uma label caso tenha somente uma opção.
+	* Métodos:
+	* Eventos:
+
+
+	
+//todo: revisar importação json
