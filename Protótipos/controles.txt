@@ -238,14 +238,39 @@ PagerDescriptor
 	* Métodos:
 	* Eventos:
 
-	
-	
+Grid
+	* Descrição: Formato tabular de dados.
+	* Pai: Container.
+	* Filhos: Column.
+	* Propriedades:
+		ordering: Vetor com nome de colunas que estão ordenadas, ex.: nome asc,idade desc.
+		startRecord: Número do registro inicial.
+		endRecord: Número do registro final.
+	* Métodos:
+		refresh(): Submete todos os filtros, ordenação e paginação para o servidor afim de obter novos dados.
+	* Eventos:
+		
+GridColumn
+	* Descrição: Colunas de um grid.
+	* Pai: Grid.
+	* Filhos: Nenhum.
+	* Propriedades:
+		resize[0,1]: Determina se a coluna pode ser redimensionada pelo usuário; caso contrário, terá o tamanho máximo necessário para exibir os dados.
+		order[0,1]: Determina se a coluna pode ser reordenada.
+		filter: Vetor que determina os filtros aplicados, ex.: % teste (contém teste). Outras operações: >,<,>=,<=,<>,^%(inicia com),%$(termina com).
+		align[left,center,right]: Alinhamento dos dados.
+		overflow: Modo de tratamento de dados que não cabem na célula.
+			suspension: Adiciona reticências no final
+			breaking: Quebra a linha e continua embaixo.
+		help: Texto de ajuda para a coluna/campo.
+	* Métodos:
+	* Eventos:
+
+		
 Calendar
 	//todo: juntar vários antes de projetar
-	
 
-//todo: analisar de vale a pena virar controle
+//todo: analisar se vale a pena virar controle
 	Wizard
 	Column
 	Row
-//todo: revisar importação json
