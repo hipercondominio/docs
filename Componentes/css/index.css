@@ -1,0 +1,57 @@
+﻿* {
+	/*border: 1px solid silver;*/
+}
+
+body, tbody {
+	font-family: Verdana;
+	font-size: small;
+	background-color: ghostwhite;
+}
+
+[class$=desc] {
+	font-style: italic;
+}
+
+.comp {
+	margin-bottom: 10px;
+}
+
+.comp-desc {
+	margin-bottom: 10px;
+}
+
+.comp-list {
+	font-family: Consolas;
+}
+
+.indent-1 {
+	margin-left: 4ex;
+}
+
+.indent-2 {
+	margin-left: 8ex;
+}
+
+code {
+	font-size: medium;
+}
+
+.code-comp {
+	color: blue;
+}
+
+.code-prop {
+	color: darkgreen;
+}
+
+[class^=code-data] {
+	color: darkred;
+}
+
+.code-data-default {
+	background-color: whitesmoke;
+}
+
+[title] {
+	cursor: help;
+}
