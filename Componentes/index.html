@@ -14,59 +14,114 @@
 <body class="container">
 	<h1>Componentes</h1>
 	<hr />
-	<div class="comp-list">
-		<a class="collapse-label" data-toggle="collapse" href="#Link">Link</a>,
-		<a class="collapse-label" data-toggle="collapse" href="#Breadcrumb">Breadcrumb</a>
-	</div>
-	<div class="collapse comp" id="Link">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">Link</h5>
-				<div class="card-text">
-					<div class="comp-desc">
-						Ligação para obter um novo conteúdo e aplicar na página.
-					</div>
-					<div><b>Pai:</b> <code class="code-comp">Container</code>.</div>
-					<div><b>Filhos:</b> <span class="desc">Texto puro.</span></div>
-					<div>
-						<div><b>Propriedades:</b></div>
-						<div class="indent-1">
-							<div><code class="code-prop">href</code>: <span class="item-desc">Página html com conteúdo de destino.</span></div>
-							<div><code class="code-prop">target</code>: <span class="item-desc">Seletor que especifica onde será inserido o conteúdo obtido pelo link.</span></div>
-							<div><code class="code-prop">track</code>: <span class="item-desc">Determina se o link visitado será exibido em outra cor.</span></div>
-							<div><code class="code-prop">status</code>: <span class="item-desc">Estilo de visualização do link.</span></div>
-							<div class="indent-2">
-								<div><code class="code-data-default">link</code>: <span class="item-desc">O link não está ativo.</span></div>
-								<div><code class="code-data">visited</code>: <span class="item-desc">O link foi visitado.</span></div>
-								<div><code class="code-data">active</code>: <span class="item-desc">O link está sendo observado.</span></div>
-							</div>
-						</div>
-						<div><b>Métodos:</b> <span class="desc">Padrão HTML.</span></div>
-						<div><b>Eventos:</b> <span class="desc">Padrão HTML.</span></div>
-					</div>
-				</div>
+
+	<accordion order="title">
+		<collapse title="Container">
+			<div class="comp-desc">
+				Qualquer elemento que permita filhos, como tags div, span, button, etc.
 			</div>
-		</div>
-	</div>
-	<div class="collapse comp" id="Breadcrumb">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">Breadcrumb</h5>
-				<div class="card-text">
-					<div class="comp-desc">
-						Listagem de links que aponta uma sequencia de páginas, migalha-de-pão.
-					</div>
-					<div><b>Pai:</b> <code class="code-comp">Container</code>.</div>
-					<div><b>Filhos:</b> <code class="code-comp">Link</code></div>
-					<div>
-						<div><b>Propriedades:</b> <span class="desc">Padrão HTML.</span></div>
-						<div><b>Métodos:</b> <span class="desc">Padrão HTML.</span></div>
-						<div><b>Eventos:</b> <span class="desc">Padrão HTML.</span></div>
-					</div>
-				</div>
+			<kv title="Pai"><comp name="Container" />.</kv>
+			<kv title="Filhos">Vários.</kv>
+			<kv title="Propriedades">Padrão HTML.</kv>
+			<kv title="Métodos">Padrão HTML.</kv>
+			<kv title="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse title="Link">
+			<div class="comp-desc">
+				Ligação para obter um novo conteúdo e aplicar na página.
 			</div>
-		</div>
-	</div>
+			<kv title="Pai"><comp name="Container" />.</kv>
+			<kv title="Filhos">Texto puro.</kv>
+			<kv title="Propriedades" mode="block">
+				<kv title="href" class="code-prop">Página html com conteúdo de destino.</kv>
+				<kv title="target" class="code-prop">Seletor que especifica onde será inserido o conteúdo obtido pelo link.</kv>
+				<kv title="track" class="code-prop">Determina se o link visitado será exibido em outra cor.</kv>
+				<kv title="status" class="code-prop" mode="block">
+					Estilo de visualização do link.
+					<kv title="link" default class="code-data">O link não está ativo.</kv>
+					<kv title="visited" class="code-data">O link foi visitado.</kv>
+					<kv title="active" class="code-data">O link está sendo aberto.</kv>
+				</kv>
+			</kv>
+			<kv title="Métodos">Padrão HTML.</kv>
+			<kv title="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse title="BreadCrumb">
+			<div class="comp-desc">
+				Listagem de links que aponta uma sequencia de páginas, migalha-de-pão.
+			</div>
+			<kv title="Pai"><comp name="Container" /></kv>
+			<kv title="Filhos"><comp name="Link" /></kv>
+			<kv title="Propriedades">Padrão HTML.</kv>
+			<kv title="Métodos">Padrão HTML.</kv>
+			<kv title="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse title="Input">
+			<div class="comp-desc">
+				Equivale ao 'INPUT' do Html. Identico ao Html, adicionado dos recursos abaixo.
+			</div>
+			<kv title="Pai"><comp name="Container" />.</kv>
+			<kv title="Filhos">Nenhum.</kv>
+			<kv title="Propriedades" mode="block">
+				<kv title="name" class="code-prop">Nome do controle, usado para gerar o json de dados.</kv>
+				<kv title="value" class="code-prop">Valor do controle, usado para gerar o json de dados.</kv>
+				<kv title="disabled" class="code-prop">Determina se o usuário pode iteragir com o controle.</kv>
+				<kv title="helpDisabled" class="code-prop">Texto de ajuda quando o controle estiver desabilitado.</kv>
+				<kv title="mask" class="code-prop">Máscara para restrição e formatação dos dados.</kv>
+				<kv title="chars" class="code-prop">Uma expressão regular de validação de teclas válidas.</kv>
+				<kv title="align" class="code-prop" mode="block">
+					Alinhamento do texto.
+					<kv title="left" default class="code-data">Alinhado a direita.</kv>
+					<kv title="right" class="code-data">Alinhado a esquerda.</kv>
+				</kv>
+			</kv>
+			<kv title="Métodos">Padrão HTML.</kv>
+			<kv title="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse title="InputGroup">
+			<div class="comp-desc">
+				Elemento InputGroup do bootstrap, com blocos de texto ou botões, antes e/ou depois, alinhados.
+			</div>
+			<kv title="Pai"><comp name="Container" />.</kv>
+			<kv title="Filhos"><comp name="Input" />,<comp name="Text" />,<comp name="Button" />.</kv>
+			<kv title="Propriedades">Padrão HTML.</kv>
+			<kv title="Métodos">Padrão HTML.</kv>
+			<kv title="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse title="Group">
+			<div class="comp-desc">
+				Agrupador de campos em áreas de interesse do sistema.
+			</div>
+			<kv title="Pai"><comp name="Container" />.</kv>
+			<kv title="Filhos">Vários.</kv>
+			<kv title="Propriedades" mode="block">
+				<kv title="state" class="code-prop" mode="block">
+					Define se o grupo está aberto ou fechado.
+					<kv title="0" default class="code-data">Fechado.</kv>
+					<kv title="1" class="code-data">Aberto.</kv>
+				</kv>
+			</kv>
+			<kv title="Métodos" mode="block">
+				<kv title="toggle()" class="code-prop">Altera o agrupador com abertura e fechamento.</kv>
+			</kv>
+			<kv title="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse title="Label">
+			<div class="comp-desc">
+				Título de campo.
+			</div>
+			<kv title="Pai"><comp name="Container" />.</kv>
+			<kv title="Filhos">Nenhum.</kv>
+			<kv title="Propriedades" mode="block">
+				<kv title="related" class="code-prop">Seletor do controle de iteração do usuário, como um controle input, select, etc.</kv>
+				<kv title="text" class="code-prop">Valor do campo.</kv>
+				<kv title="abbr" class="code-prop">Abreviatura quando texto excede tamanho do controle.</kv>
+				<kv title="help" class="code-prop">Texto de ajuda que aparece para o usuário ao passar o mouse ou segurar o ponteiro em cima do controle.</kv>
+			</kv>
+			<kv title="Métodos">Padrão HTML.</kv>
+			<kv title="Eventos">Padrão HTML.</kv>
+		</collapse>
+	</accordion>
 
 	<script type="text/javascript" src="js/index.js"></script>
 </body>

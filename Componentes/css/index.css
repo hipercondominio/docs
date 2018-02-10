@@ -8,20 +8,9 @@ body, tbody {
 	background-color: ghostwhite;
 }
 
-[class$=desc] {
-	font-style: italic;
-}
-
-.comp {
-	margin-bottom: 10px;
-}
-
 .comp-desc {
+	font-style: italic;
 	margin-bottom: 10px;
-}
-
-.comp-list {
-	font-family: Consolas;
 }
 
 .indent-1 {
@@ -37,21 +26,27 @@ code {
 }
 
 .code-comp {
+	font-family: monospace;
+	font-size: medium;
 	color: blue;
 }
 
 .code-prop {
+	font-family: monospace;
+	font-size: medium;
 	color: darkgreen;
 }
 
-[class^=code-data] {
+.code-data {
+	font-family: monospace;
+	font-size: medium;
 	color: darkred;
 }
 
 .code-data-default {
+	font-family: monospace;
+	font-size: medium;
 	background-color: whitesmoke;
-}
-
-[title] {
-	cursor: help;
+	padding: 1px 3px;
+	border: 1px solid Silver;
 }
