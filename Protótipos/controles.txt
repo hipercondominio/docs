@@ -215,7 +215,7 @@ Checkbox
 Pager
 	* Descrição: Conjuntos de links para páginas.
 	* Pai: Container.
-	* Filhos: Link.
+	* Filhos: PageLink.
 	* Propriedades:
 		target: Seletor que especifica onde será inserido o conteúdo obtido pelo link.
 		first: Determina se aparecerá o botão ir para início.

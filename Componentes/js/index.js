@@ -1,18 +1,30 @@
-﻿$("accordion").each(function () {
+﻿//todo: fazer esfuminho.
+
+$("accordion").each(function () {
 	$(this).wrapInner("<div>");
 	//atributos temporários
 	var order = $(this).attr("order");
 	order = order.toLowerCase();
 
 	var collapses = $("collapse", this);
-	//todo: terminar
+	var items = [];
 	if (order == "title") {
-		
+		$(collapses).each(function () {
+			let item = { title: $(this).attr("title"), contents: $(this) };
+			items.push(item);
+		});
+		items.sort((a, b) => {
+			return a.title > b.title ? 1 : -1;
+		});
+		$(this).empty();
+		for (let item of items) {
+			$(this).append(item.contents);
+		}
 	}
 
 });
 
-$("accordion collapse").each(function () {
+$("accordion collapse").each(function() {
 	//atributos temporários
 	var title = $(this).attr("title");
 	var contents = $(this).html();
@@ -40,16 +52,17 @@ $("accordion collapse").each(function () {
 	`);
 	$(this).contents().unwrap();    //remoção tag
 });
-while ($("kv").length != 0) {                 
-	$("kv").each(function () {
+while ($("kv").length != 0) {              
+	$("kv").each(function() {
 		//atributos temporários
 		var title = $(this).attr("title");
 		var _default = $(this).attr("default");
+		var type = $(this).attr("type") || "";
 		var mode = $(this).attr("mode") || "";
 		mode = mode.toLowerCase();
 
 		var classes = ($(this).attr("class") || "").split(" ");
-		if (_default == "")   //exite o atributo
+		if (_default == "")   //se padrão, criar destaque
 			classes.push("code-data-default");
 
 		//atributos permanentes
@@ -65,12 +78,14 @@ while ($("kv").length != 0) {
 		}
 		var contents = $(this).html();
 		$(this).html("");
-		$(this).wrapInner(`<div><b ${attrs}>${title}</b>: ${contents}</div>`);
+		var result = `<div><b ${attrs}>${title}</b> <i>${type}</i>: ${contents}</div>`;
+		result = result.replace(" <i></i>", "");
+		$(this).wrapInner(result);
 
 		$(this).contents().unwrap();    //remoção tag
 	});
 }
-$("comp").each(function () {
+$("comp").each(function() {
 	//atributos temporários
 	var name = $(this).attr("name");
 
@@ -79,9 +94,15 @@ $("comp").each(function () {
 	$(this).wrapInner(`<a href="#${name}">${name}</a>`);
 	$(this).contents().unwrap();    //remoção tag
 });
+$("spacer").each(function () {
+	//atributos temporários
+	var len = $(this).attr("len");
+
+	$(this).wrapInner(`<div style='height: ${len}px'>`);
+});
 
 
 
-$(".code-data-default").each(function () {
+$(".code-data-default").each(function() {
 	$(this).attr("title", "Padrão");
 });
