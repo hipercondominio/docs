@@ -31,13 +31,13 @@ code {
 	color: blue;
 }
 
-.code-prop {
+.code-prop > div > b {
 	font-family: monospace;
 	font-size: medium;
 	color: darkgreen;
 }
 
-.code-data {
+.code-data > div > b {
 	font-family: monospace;
 	font-size: medium;
 	color: darkred;
@@ -49,4 +49,6 @@ code {
 	background-color: whitesmoke;
 	padding: 1px 3px;
 	border: 1px solid Silver;
+	cursor: help;
 }
+

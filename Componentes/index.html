@@ -15,347 +15,427 @@
 	<h1>Componentes</h1>
 	<hr />
 
-	<accordion order="title">
-		<collapse title="Container">
+	<accordion order="name">
+		<collapse name="Container">
 			<div class="comp-desc">
 				Qualquer elemento que permita filhos, como tags div, span, button, etc.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Vários.</kv>
-			<kv title="Propriedades">Padrão HTML.</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Vários.</kv>
+			<kv name="Propriedades">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Link">
+		<collapse name="Link">
 			<div class="comp-desc">
 				Ligação para obter um novo conteúdo e aplicar na página.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Texto puro.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="href" class="code-prop" type="string">Página html com conteúdo de destino.</kv>
-				<kv title="target" class="code-prop" type="selector">Seletor que especifica onde será inserido o conteúdo obtido pelo link.</kv>
-				<kv title="track" class="code-prop" type="string">Determina se o link visitado será exibido em outra cor.</kv>
-				<kv title="status" class="code-prop" type="string" mode="block">
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Texto puro.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="href" class="code-prop" type="string">Página html com conteúdo de destino.</kv>
+				<kv name="target" class="code-prop" type="selector">Seletor que especifica onde será inserido o conteúdo obtido pelo link.</kv>
+				<kv name="track" class="code-prop" type="string">Determina se o link visitado será exibido em outra cor.</kv>
+				<kv name="status" class="code-prop" type="string" mode="block">
 					Estilo de visualização do link.
-					<kv title="link" default class="code-data">O link não está ativo.</kv>
-					<kv title="visited" class="code-data">O link foi visitado.</kv>
-					<kv title="active" class="code-data">O link está sendo aberto.</kv>
+					<kv name="link" default class="code-data">O link não está ativo.</kv>
+					<kv name="visited" class="code-data">O link foi visitado.</kv>
+					<kv name="active" class="code-data">O link está sendo aberto.</kv>
 				</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="BreadCrumb">
+		<collapse name="BreadCrumb">
 			<div class="comp-desc">
 				Listagem de links que aponta uma sequencia de páginas, migalha-de-pão.
 			</div>
-			<kv title="Pai"><comp name="Container" /></kv>
-			<kv title="Filhos"><comp name="Link" /></kv>
-			<kv title="Propriedades">Padrão HTML.</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Pai"><comp name="Container"></comp></kv>
+			<kv name="Filhos"><comp name="Link"></comp></kv>
+			<kv name="Propriedades">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Input">
+		<collapse name="Input">
 			<div class="comp-desc">
 				Equivale ao 'INPUT' do Html. Identico ao Html, adicionado dos recursos abaixo.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Nenhum.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
-				<kv title="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
-				<kv title="disabled" class="code-prop" type="string" mode="block">
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Nenhum.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
+				<kv name="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
+				<kv name="disabled" class="code-prop" type="string" mode="block">
 					Determina se o usuário pode iteragir com o controle.
-					<kv title="0" default class="code-prop" type="string">Controle bloqueado.</kv>
-					<kv title="1" class="code-prop" type="string">Controle liberado.</kv>
+					<kv name="0" default class="code-prop" type="string">Controle bloqueado.</kv>
+					<kv name="1" class="code-prop" type="string">Controle liberado.</kv>
 				</kv>
-				<kv title="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
-				<kv title="mask" class="code-prop" type="string">Máscara para restrição e formatação dos dados.</kv>
-				<kv title="chars" class="code-prop" type="regExp">Uma expressão regular de validação de teclas válidas.</kv>
-				<kv title="align" class="code-prop" type="choice" mode="block">
+				<kv name="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
+				<kv name="mask" class="code-prop" type="string">Máscara para restrição e formatação dos dados.</kv>
+				<kv name="chars" class="code-prop" type="regExp">Uma expressão regular de validação de teclas válidas.</kv>
+				<kv name="align" class="code-prop" type="choice" mode="block">
 					Alinhamento do texto.
-					<kv title="left" default class="code-data">Alinhado a direita.</kv>
-					<kv title="right" class="code-data">Alinhado a esquerda.</kv>
+					<kv name="left" default class="code-data">Alinhado a direita.</kv>
+					<kv name="right" class="code-data">Alinhado a esquerda.</kv>
 				</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="InputGroup">
+		<collapse name="InputGroup">
 			<div class="comp-desc">
 				Elemento InputGroup do bootstrap, com blocos de texto ou botões, antes e/ou depois, alinhados.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos"><comp name="Input" />,<comp name="Text" />,<comp name="Button" />.</kv>
-			<kv title="Propriedades">Padrão HTML.</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos"><comp name="Input"></comp>,Texto puro,<comp name="Button"></comp>.</kv>
+			<kv name="Propriedades">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Group">
+		<collapse name="Group">
 			<div class="comp-desc">
 				Agrupador de campos em áreas de interesse do sistema.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Vários.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="state" class="code-prop" type="string" mode="block">
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Vários.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="state" class="code-prop" type="string" mode="block">
 					Define se o grupo está aberto ou fechado.
-					<kv title="0" default class="code-data">Fechado.</kv>
-					<kv title="1" class="code-data">Aberto.</kv>
+					<kv name="0" default class="code-data">Fechado.</kv>
+					<kv name="1" class="code-data">Aberto.</kv>
 				</kv>
 			</kv>
-			<kv title="Métodos" mode="block">
-				<kv title="toggle()" class="code-prop" type="string">Altera o agrupador com abertura e fechamento.</kv>
+			<kv name="Métodos" mode="block">
+				<kv name="toggle()" class="code-prop" type="string">Altera o agrupador com abertura e fechamento.</kv>
 			</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Label">
+		<collapse name="Label">
 			<div class="comp-desc">
 				Título de campo.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Nenhum.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="related" class="code-prop" type="string">Seletor do controle de iteração do usuário, como um controle input, select, etc.</kv>
-				<kv title="text" class="code-prop" type="string">Valor do campo.</kv>
-				<kv title="abbr" class="code-prop" type="string">Abreviatura quando texto excede tamanho do controle.</kv>
-				<kv title="help" class="code-prop" type="string">Texto de ajuda que aparece para o usuário ao passar o mouse ou segurar o ponteiro em cima do controle.</kv>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Nenhum.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="related" class="code-prop" type="string">Seletor do controle de iteração do usuário, como um controle input, select, etc.</kv>
+				<kv name="text" class="code-prop" type="string">Texto do campo.</kv>
+				<kv name="abbr" class="code-prop" type="string">Abreviatura quando texto excede tamanho do controle.</kv>
+				<kv name="help" class="code-prop" type="string">Texto de ajuda que aparece para o usuário ao passar o mouse ou segurar o ponteiro em cima do controle.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Button">
+		<collapse name="Button">
 			<div class="comp-desc">
 				Equivale ao 'BUTTON' do Html. Identico ao Html, adicionado dos recursos abaixo.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos"><comp name="Icon" />, <comp name="Text" />.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
-				<kv title="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
-				<kv title="disabled" class="code-prop" type="boolean" mode="block">
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos"><comp name="Icon"></comp>, Texto Puro.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
+				<kv name="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
+				<kv name="disabled" class="code-prop" type="boolean" mode="block">
 					Determina se o usuário pode iteragir com o controle.
-					<kv title="0" default class="code-prop">Controle bloqueado.</kv>
-					<kv title="1" class="code-prop">Controle liberado.</kv>
+					<kv name="0" default class="code-prop">Controle bloqueado.</kv>
+					<kv name="1" class="code-prop">Controle liberado.</kv>
 				</kv>
-				<kv title="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
+				<kv name="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Entries">
+		<collapse name="Entries">
 			<div class="comp-desc">
 				Um grupo de opções já selecionadas pelo cliente.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos"><comp name="Entry" />.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
-				<kv title="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
-				<kv title="display" class="code-prop" type="string">Texto que vai ser exibido, representando os itens selecionados, ex.: Mandar ${email} ${dias} antes do evento. Onde os valores em chaves são nomes de campos.</kv>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos"><comp name="Entry"></comp>.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
+				<kv name="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
+				<kv name="display" class="code-prop" type="string">Texto que vai ser exibido, representando os itens selecionados, ex.: Mandar ${email} ${dias} antes do evento. Onde os valores em chaves são nomes de campos.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Radio">
+		<collapse name="Entry">
+			<div class="comp-desc">
+				Uma entrada padrão de controle(s). Equivale a um array de controles.
+			</div>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos"><comp name="Entry"></comp>.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
+				<kv name="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
+				<kv name="display" class="code-prop" type="string">Texto que vai ser exibido, representando os itens selecionados, ex.: Mandar ${email} ${dias} antes do evento. Onde os valores em chaves são nomes de campos.</kv>
+			</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse name="Radio">
 			<div class="comp-desc">
 				Equivale ao 'INPUT[type=radio]' do html. Identico ao Html, adicionado dos recursos abaixo.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos"><comp name="Entry" />.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
-				<kv title="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
-				<kv title="disabled" class="code-prop" type="boolean" mode="block">
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos"><comp name="Entry"></comp>.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
+				<kv name="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
+				<kv name="disabled" class="code-prop" type="boolean" mode="block">
 					Determina se o usuário pode iteragir com o controle.
-					<kv title="0" default class="code-prop">Controle bloqueado.</kv>
-					<kv title="1" class="code-prop">Controle liberado.</kv>
+					<kv name="0" default class="code-prop">Controle bloqueado.</kv>
+					<kv name="1" class="code-prop">Controle liberado.</kv>
 				</kv>
-				<kv title="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
-				<kv title="text" class="code-prop" type="string">Texto de descrição do controle.</kv>
+				<kv name="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
+				<kv name="text" class="code-prop" type="string">Texto de descrição do controle.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Select">
+		<collapse name="Select">
 			<div class="comp-desc">
 				Equivale ao 'SELECT' do html. Identico ao Html, adicionado dos recursos abaixo.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos"><comp name="Option" />.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
-				<kv title="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
-				<kv title="required" class="code-prop" type="boolean">Força a criação de uma opção 'selecione', obrigando o usuário a trocar.</kv>
-				<kv title="disabled" class="code-prop" type="boolean" mode="block">
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos"><comp name="Option"></comp>.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
+				<kv name="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
+				<kv name="required" class="code-prop" type="boolean">Força a criação de uma opção 'selecione', obrigando o usuário a trocar.</kv>
+				<kv name="disabled" class="code-prop" type="boolean" mode="block">
 					Determina se o usuário pode iteragir com o controle.
-					<kv title="0" default class="code-prop">Controle bloqueado.</kv>
-					<kv title="1" class="code-prop">Controle liberado.</kv>
+					<kv name="0" default class="code-prop">Controle bloqueado.</kv>
+					<kv name="1" class="code-prop">Controle liberado.</kv>
 				</kv>
-				<kv title="hide" class="code-prop" type="boolean" mode="block">
+				<kv name="hide" class="code-prop" type="boolean" mode="block">
 					Determina se o combo vai aparentar um label simples se houver só uma opção.
-					<kv title="0" default class="code-prop">Aparece um select com uma opção.</kv>
-					<kv title="1" class="code-prop">Esconde o select e gera uma label.</kv>
+					<kv name="0" default class="code-prop">Aparece um select com uma opção.</kv>
+					<kv name="1" class="code-prop">Esconde o select e gera uma label.</kv>
 				</kv>
-				<kv title="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
+				<kv name="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Number">
+		<collapse name="Number">
 			<div class="comp-desc">
 				Equivale ao 'INPUT[type=number]' do html. Identico ao Html, adicionado dos recursos abaixo.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Nenhum.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
-				<kv title="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
-				<kv title="disabled" class="code-prop" type="boolean" mode="block">
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Nenhum.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
+				<kv name="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
+				<kv name="disabled" class="code-prop" type="boolean" mode="block">
 					Determina se o usuário pode iteragir com o controle.
-					<kv title="0" default class="code-prop">Controle bloqueado.</kv>
-					<kv title="1" class="code-prop">Controle liberado.</kv>
+					<kv name="0" default class="code-prop">Controle bloqueado.</kv>
+					<kv name="1" class="code-prop">Controle liberado.</kv>
 				</kv>
-				<kv title="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
+				<kv name="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Fieldset">
+		<collapse name="Fieldset">
 			<div class="comp-desc">
 				Equivale ao 'Fieldset' do html. Identico ao Html, adicionado dos recursos abaixo.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Vários.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="legend" class="code-prop" type="string">Texto que aparecerá acima do fieldset.</kv>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Vários.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="legend" class="code-prop" type="string">Texto que aparecerá acima do fieldset.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Text">
-			<div class="comp-desc">
-				Um bloco simples de texto.
-			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Nenhum.</kv>
-			<kv title="Propriedades">Padrão HTML.</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
-		</collapse>
-		<collapse title="NotifyIcon">
+		<collapse name="NotifyIcon">
 			<div class="comp-desc">
 				Cria uma imagem compacta (baixa resolução) para notificações.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Nenhum.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="href" class="code-prop" type="url">Página html com conteúdo de destino.</kv>
-				<kv title="target" class="code-prop" type="selector">Seletor que especifica onde será inserido o conteúdo obtido pelo link.</kv>
-				<kv title="legend" class="code-prop" type="string">Texto que aparecerá abaixo do ícone.</kv>
-				<kv title="counter" class="code-prop" type="natural">Badge com número de notificações relativas ao ícone.</kv>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Nenhum.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="href" class="code-prop" type="url">Página html com conteúdo de destino.</kv>
+				<kv name="target" class="code-prop" type="selector">Seletor que especifica onde será inserido o conteúdo obtido pelo link.</kv>
+				<kv name="legend" class="code-prop" type="string">Texto que aparecerá abaixo do ícone.</kv>
+				<kv name="counter" class="code-prop" type="natural">Badge com número de notificações relativas ao ícone.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Checkbox">
+		<collapse name="Checkbox">
 			<div class="comp-desc">
 				Equivale ao 'INPUT[type=checkbox]' do html. Identico ao Html, adicionado dos recursos abaixo.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Vários.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
-				<kv title="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
-				<kv title="disabled" class="code-prop" type="boolean" mode="block">
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Vários.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="name" class="code-prop" type="string">Nome do controle, usado para gerar o json de dados.</kv>
+				<kv name="value" class="code-prop" type="string">Valor do controle, usado para gerar o json de dados.</kv>
+				<kv name="disabled" class="code-prop" type="boolean" mode="block">
 					Determina se o usuário pode iteragir com o controle.
-					<kv title="0" default class="code-prop">Controle bloqueado.</kv>
-					<kv title="1" class="code-prop">Controle liberado.</kv>
+					<kv name="0" default class="code-prop">Controle bloqueado.</kv>
+					<kv name="1" class="code-prop">Controle liberado.</kv>
 				</kv>
-				<kv title="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
+				<kv name="helpDisabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Pager">
+		<collapse name="Pager">
 			<div class="comp-desc">
 				Conjuntos de links para páginas.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Nenhum.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="grid" class="code-prop" type="selector">Seletor que especifica o grid que contém o controle dos dados.</kv>
-				<kv title="first" class="code-prop" type="boolean">Determina se aparecerá o botão ir para início.</kv>
-				<kv title="last" class="code-prop" type="boolean">Determina se aparecerá o botão ir para fim.</kv>
-				<kv title="next" class="code-prop" type="boolean">Determina se aparecerá o botão ir para próximo.</kv>
-				<kv title="prev" class="code-prop" type="boolean">Determina se aparecerá o botão ir para anterior.</kv>
-				<kv title="records" class="code-prop" type="natural">Total de registros.</kv>
-				<kv title="recordsPage" class="code-prop" type="natural">Total de registros por página.</kv>
-				<kv title="page" class="code-prop" type="natural">Página atual.</kv>
-				<kv title="pages" class="code-prop" type="natural">Máximo de páginas que aparecem para uma ser selecionada.</kv>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Nenhum.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="grid" class="code-prop" type="selector">Seletor que especifica o grid que contém o controle dos dados.</kv>
+				<kv name="first" class="code-prop" type="boolean">Determina se aparecerá o botão ir para início.</kv>
+				<kv name="last" class="code-prop" type="boolean">Determina se aparecerá o botão ir para fim.</kv>
+				<kv name="next" class="code-prop" type="boolean">Determina se aparecerá o botão ir para próximo.</kv>
+				<kv name="prev" class="code-prop" type="boolean">Determina se aparecerá o botão ir para anterior.</kv>
+				<kv name="records" class="code-prop" type="natural">Total de registros.</kv>
+				<kv name="recordsPage" class="code-prop" type="natural">Total de registros por página.</kv>
+				<kv name="page" class="code-prop" type="natural">Página atual.</kv>
+				<kv name="pages" class="code-prop" type="natural">Máximo de páginas que aparecem para uma ser selecionada.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="PageDescriptor">
+		<collapse name="PageDescriptor">
 			<div class="comp-desc">
 				Informação sobre o pager, ex.: Exibindo registros de 20 a 25 de 100.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos">Nenhum.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="pager" class="code-prop" type="selector">Seletor que especifica qual pager está sendo monitorado.</kv>
-				<kv title="template" class="code-prop" type="string">Modelo de exibição do controle, algo como Exibindo registros de {startRecord} a {endRecord} de {records}.</kv>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Nenhum.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="pager" class="code-prop" type="selector">Seletor que especifica qual pager está sendo monitorado.</kv>
+				<kv name="template" class="code-prop" type="string">Modelo de exibição do controle, algo como Exibindo registros de {startRecord} a {endRecord} de {records}.</kv>
 			</kv>
-			<kv title="Métodos">Padrão HTML.</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="Grid">
+		<collapse name="Grid">
 			<div class="comp-desc">
 				Formato tabular de dados.
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos"><comp name="GridColumn" />.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="ordering" class="code-prop" type="array[string]">Vetor com nome de colunas que estão ordenadas, ex.: nome asc,idade desc.</kv>
-				<kv title="startRecord" class="code-prop" type="natural">Número do registro inicial.</kv>
-				<kv title="endRecord" class="code-prop" type="natural">Número do registro final.</kv>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos"><comp name="GridColumn"></comp>.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="src" class="code-prop" type="url">Página que serve de fonte de dados para o grid.</kv>
+				<kv name="search" class="code-prop" type="string">Uma expressão de pesquisa simples, em todas as colunas</kv>
+				<kv name="ordering" class="code-prop" type="array[string]">Vetor com nome de colunas que estão ordenadas, ex.: nome asc,idade desc.</kv>
+				<kv name="startRecord" class="code-prop" type="natural">Número do registro inicial.</kv>
+				<kv name="endRecord" class="code-prop" type="natural">Número do registro final.</kv>
 			</kv>
-			<kv title="Métodos" mode="block">
-				<kv title="refresh" class="code-prop">Submete todos os filtros, ordenação e paginação para o servidor afim de obter novos dados.</kv>
+			<kv name="Métodos" mode="block">
+				<kv name="refresh()" class="code-prop">Submete todos os filtros, ordenação e paginação para o servidor afim de obter novos dados.</kv>
 			</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<collapse title="GridColumn">
+		<collapse name="GridColumn">
 			<div class="comp-desc">
-				Formato tabular de dados.
+				Representa uma coluna do controle Grid. =D
 			</div>
-			<kv title="Pai"><comp name="Container" />.</kv>
-			<kv title="Filhos"><comp name="GridColumn" />.</kv>
-			<kv title="Propriedades" mode="block">
-				<kv title="resize" class="code-prop" type="boolean">Determina se a coluna pode ser redimensionada pelo usuário; caso contrário, terá o tamanho máximo necessário para exibir os dados.</kv>
-				<kv title="filter" class="code-prop" type="array">Vetor que determina os filtros aplicados, ex.: % teste (contém teste). Outras operações: >,<,>=,<=,<>,^%(inicia com),%$(termina com).</kv>
-				<kv title="help" class="code-prop">Texto de ajuda para a coluna/campo.</kv>
-				<kv title="align" class="code-prop" type="choice">
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos"><comp name="GridColumn"></comp>.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="width" class="code-prop" type="natural">Tamanho padrão da coluna.</kv>
+				<kv name="filter" class="code-prop" type="array">Vetor que determina os filtros aplicados, ex.: % teste (contém teste). Outras operações: >,<,>=,<=,<>,^(inicia com),$(termina com).</kv>
+				<kv name="help" class="code-prop">Texto de ajuda para a coluna/campo.</kv>
+				<kv name="align" class="code-prop" type="choice" mode="block">
 					Alinhamento dos dados.
-					<kv title="left" default class="code-data">Adiciona reticências no final</kv>
-					<kv title="center" class="code-data">Quebra a linha e continua embaixo.</kv>
-					<kv title="right" class="code-data">Texto de ajuda para a coluna/campo.</kv>
+					<kv name="left" default class="code-data">Adiciona reticências no final</kv>
+					<kv name="center" class="code-data">Quebra a linha e continua embaixo.</kv>
+					<kv name="right" class="code-data">Texto de ajuda para a coluna/campo.</kv>
 				</kv>
-				<kv title="overflow" class="code-prop" type="choice">
+				<kv name="overflow" class="code-prop" type="choice" mode="block">
 					Modo de tratamento de dados que não cabem na célula.
-					<kv title="suspension" default class="code-data">Adiciona reticências no final</kv>
-					<kv title="breaking" class="code-data">Quebra a linha e continua embaixo.</kv>
+					<kv name="suspension" default class="code-data">Adiciona reticências no final</kv>
+					<kv name="breaking" class="code-data">Quebra a linha e continua embaixo.</kv>
 				</kv>
 			</kv>
-			<kv title="Métodos" mode="block">
-				<kv title="refresh" class="code-prop">Submete todos os filtros, ordenação e paginação para o servidor afim de obter novos dados.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse name="ListCalendar">
+			<div class="comp-desc">
+				Calendário onde são apresentados os compromissos de forma corrida. Sempre apresenta compromissos da data atual em diante e somente os compromissos preenchidos.
+			</div>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Nenhum.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="mode" class="code-prop" mode="block">
+					Um dos seguintes modos:
+					<kv name="day" class="code-data">Exibição das horas do dia.</kv>
+					<kv name="week" default class="code-data">Exibição dos dias da semana.</kv>
+					<kv name="month" class="code-data">Exibição dos dias do mes.</kv>
+				</kv>
 			</kv>
-			<kv title="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse name="Menu">
+			<div class="comp-desc">
+				Menu de links.
+			</div>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos"><comp name="MenuItem"></comp>.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="style" class="code-prop" mode="block">
+					Um dos seguintes estilos:
+					<kv name="deep" default class="code-data">Os itens vão abrindo internamente em profundidade.</kv>
+				</kv>
+			</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse name="MenuItem">
+			<div class="comp-desc">
+				Representa um item do menu.
+			</div>
+			<kv name="Pai"><comp name="Menu"></comp>.</kv>
+			<kv name="Filhos">Vários.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="href" class="code-prop">Link destino do item de menu.</kv>
+			</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse name="Wizard">
+			<div class="comp-desc">
+				Assistente de vários passos.
+			</div>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos"><comp name="Step"></comp>.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="active" class="code-prop" typeof="natural">Número da etapa atual.</kv>
+				<kv name="total" class="code-prop" typeof="natural">Número total de etapas.</kv>
+			</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse name="Step">
+			<div class="comp-desc">
+				Representa um formulário de etapa do assistente.
+			</div>
+			<kv name="Pai"><comp name="Wizard"></comp>.</kv>
+			<kv name="Filhos">Vários.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="ignore" class="code-prop" typeof="boolean">Determina se a etapa foi ignorada pelo sistema.</kv>
+				<kv name="skip" class="code-prop" typeof="boolean">Determina se a etapa pode ser evitada pelo usuário.</kv>
+			</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
 	</accordion>
-	<spacer len="100" />
+	<spacer len="100"></spacer>
 	<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
+<!--
+//todo: fazer exemplo de componentes.
+//todo: fazer exemplo de estrutura de dados proposta para os controles, de entrada e de saída.
+//todo: fazer controle estrutura de condominio.
+//todo: fazer controle wizard.
+-->

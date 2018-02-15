@@ -1,32 +1,31 @@
-﻿//todo: fazer esfuminho.
+﻿//todo: fazer esfuminho durante a transformação
 
 $("accordion").each(function () {
-	$(this).wrapInner("<div>");
-	//atributos temporários
+	//atributos componente
 	var order = $(this).attr("order");
 	order = order.toLowerCase();
 
 	var collapses = $("collapse", this);
 	var items = [];
-	if (order == "title") {
+	if (order == "name") {
 		$(collapses).each(function () {
-			let item = { title: $(this).attr("title"), contents: $(this) };
+			let item = { name: $(this).attr("name"), contents: $(this) };
 			items.push(item);
 		});
 		items.sort((a, b) => {
-			return a.title > b.title ? 1 : -1;
+			return a.name > b.name ? 1 : -1;
 		});
-		$(this).empty();
+		$("collapse", this).remove();
 		for (let item of items) {
 			$(this).append(item.contents);
 		}
 	}
-
+	$(this).wrapInner("<div>");
 });
 
 $("accordion collapse").each(function() {
-	//atributos temporários
-	var title = $(this).attr("title");
+	//atributos componente
+	var name = $(this).attr("name");
 	var contents = $(this).html();
 
 	//transferência do conteúdo
@@ -35,27 +34,33 @@ $("accordion collapse").each(function() {
 	//transformação
 	$(this).wrapInner(`
 		<div class="card">
-			<div class="card-header" id="headingOne">
+			<div class="card-header" id="Card${name}">
 				<h5 class="mb-0">
-					<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#${title}" aria-expanded="false" aria-controls="collapseOne">
-						${title}
+					<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#${name}" aria-expanded="false" aria-controls="collapseOne">
+						${name}
 					</button>
 				</h5>
 			</div>
 
-			<div id="${title}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+			<div id="${name}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 				<div class="card-body">
 					${contents}
 				</div>
 			</div>
 		</div>
 	`);
-	$(this).contents().unwrap();    //remoção tag
 });
-while ($("kv").length != 0) {              
-	$("kv").each(function() {
-		//atributos temporários
-		var title = $(this).attr("title");
+
+var hasKv = true;
+while (hasKv) {
+	var hasKv = false;
+	$("kv").each(function () {
+		if (this.dataset.ok)
+			return;
+
+		hasKv = true;
+		//atributos componente
+		var name = $(this).attr("name");
 		var _default = $(this).attr("default");
 		var type = $(this).attr("type") || "";
 		var mode = $(this).attr("mode") || "";
@@ -65,7 +70,7 @@ while ($("kv").length != 0) {
 		if (_default == "")   //se padrão, criar destaque
 			classes.push("code-data-default");
 
-		//atributos permanentes
+		//atributos html
 		var attrs = [];
 		var _class = classes.join(' ');
 		if (_class != "")
@@ -78,15 +83,14 @@ while ($("kv").length != 0) {
 		}
 		var contents = $(this).html();
 		$(this).html("");
-		var result = `<div><b ${attrs}>${title}</b> <i>${type}</i>: ${contents}</div>`;
+		var result = `<div><b ${attrs}>${name}</b> <i>${type}</i>: ${contents}</div>`;
 		result = result.replace(" <i></i>", "");
 		$(this).wrapInner(result);
-
-		$(this).contents().unwrap();    //remoção tag
+		this.dataset.ok = true;
 	});
 }
 $("comp").each(function() {
-	//atributos temporários
+	//atributos componente
 	var name = $(this).attr("name");
 
 
@@ -95,10 +99,10 @@ $("comp").each(function() {
 	$(this).contents().unwrap();    //remoção tag
 });
 $("spacer").each(function () {
-	//atributos temporários
+	//atributos componente
 	var len = $(this).attr("len");
-
-	$(this).wrapInner(`<div style='height: ${len}px'>`);
+	$(this).css("display", "inline-block");
+	$(this).css("height", `${len}px`);
 });
 
 
