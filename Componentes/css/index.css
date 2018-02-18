@@ -52,3 +52,6 @@ code {
 	cursor: help;
 }
 
+code {
+	font-size: small;
+}

@@ -1,55 +1,72 @@
-﻿//todo: fazer esfuminho durante a transformação
+﻿var hasAccordion = true;
+while (hasAccordion) {
+	var hasAccordion = false;
+	$("accordion").each(function () {
+		if (this.dataset.ok)
+			return;
+		hasAccordion = true;
 
-$("accordion").each(function () {
-	//atributos componente
-	var order = $(this).attr("order");
-	order = order.toLowerCase();
+		//atributos componente
+		var order = $(this).attr("order") || "";
+		order = order.toLowerCase();
 
-	var collapses = $("collapse", this);
-	var items = [];
-	if (order == "name") {
-		$(collapses).each(function () {
-			let item = { name: $(this).attr("name"), contents: $(this) };
-			items.push(item);
-		});
-		items.sort((a, b) => {
-			return a.name > b.name ? 1 : -1;
-		});
-		$("collapse", this).remove();
-		for (let item of items) {
-			$(this).append(item.contents);
+		var collapses = $("> collapse", this);
+		var items = [];
+		if (order == "name") {
+			$(collapses).each(function () {
+				let item = { name: $(this).attr("name"), contents: $(this) };
+				items.push(item);
+			});
+			items.sort((a, b) => {
+				return a.name > b.name ? 1 : -1;
+			});
+			for (let item of items) {
+				$(this).append(item.contents);
+			}
 		}
-	}
-	$(this).wrapInner("<div>");
-});
 
-$("accordion collapse").each(function() {
-	//atributos componente
-	var name = $(this).attr("name");
-	var contents = $(this).html();
+		this.dataset.ok = true;
+	});
+}
 
-	//transferência do conteúdo
-	$(this).html("");
+var hasCollapse = true;
+while (hasCollapse) {
+	var hasCollapse = false;
+	$("accordion collapse").each(function () {
+		if (this.dataset.ok)
+			return;
+		hasCollapse = true;
 
-	//transformação
-	$(this).wrapInner(`
-		<div class="card">
-			<div class="card-header" id="Card${name}">
-				<h5 class="mb-0">
-					<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#${name}" aria-expanded="false" aria-controls="collapseOne">
-						${name}
-					</button>
-				</h5>
-			</div>
+		//atributos componente
+		var name = $(this).attr("name");
+		var contents = $(this).html();
 
-			<div id="${name}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-				<div class="card-body">
-					${contents}
+		//transferência do conteúdo
+		$(this).html("<span class='temp'></span>");
+		
+		//transformação
+		$(this).wrapInner(`
+			<div class="card">
+				<div class="card-header" id="Card${name}">
+					<h5 class="mb-0">
+						<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#${name}" aria-expanded="false" aria-controls="collapseOne">
+							${name}
+						</button>
+					</h5>
+				</div>
+
+				<div id="${name}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+					<div class="card-body">
+						${contents}
+					</div>
 				</div>
 			</div>
-		</div>
-	`);
-});
+		`);
+		$(".temp", this).contents().unwrap();
+
+		this.dataset.ok = true;
+	});
+}
 
 var hasKv = true;
 while (hasKv) {
@@ -57,8 +74,8 @@ while (hasKv) {
 	$("kv").each(function () {
 		if (this.dataset.ok)
 			return;
-
 		hasKv = true;
+
 		//atributos componente
 		var name = $(this).attr("name");
 		var _default = $(this).attr("default");
@@ -86,10 +103,12 @@ while (hasKv) {
 		var result = `<div><b ${attrs}>${name}</b> <i>${type}</i>: ${contents}</div>`;
 		result = result.replace(" <i></i>", "");
 		$(this).wrapInner(result);
+
 		this.dataset.ok = true;
 	});
 }
-$("comp").each(function() {
+
+$("comp").each(function () {
 	//atributos componente
 	var name = $(this).attr("name");
 
@@ -98,6 +117,7 @@ $("comp").each(function() {
 	$(this).wrapInner(`<a href="#${name}">${name}</a>`);
 	$(this).contents().unwrap();    //remoção tag
 });
+
 $("spacer").each(function () {
 	//atributos componente
 	var len = $(this).attr("len");
@@ -105,8 +125,32 @@ $("spacer").each(function () {
 	$(this).css("height", `${len}px`);
 });
 
+$("ListCalendar").each(function () {
+	
+	//atributos componente
+	var mode = $(this).attr("mode") || "day";
+	var data = JSON.parse($(this).attr("src").split(";", 2)[1]);
+
+	//transformação
+	$(this).wrapInner(`
+		<table class="table table-bordered">
+			<tr>
+				<td colspan='2'>
+					< 08 qui >
+				</td>
+			</tr>
+			<tr>
+				<td>08:00</td><td>Limpeza</td>
+			</tr>
+		</table>
+	`);
+});
 
 
-$(".code-data-default").each(function() {
+$(".code-data-default").each(function () {
 	$(this).attr("title", "Padrão");
 });
+
+//todo: fazer esfuminho durante a transformação
+
+
