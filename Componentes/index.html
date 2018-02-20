@@ -71,7 +71,7 @@
 				<kv name="readonly" class="code-prop" type="boolean">Determina se o controle é somente leitura.</kv>
 				<kv name="mask" class="code-prop" type="string">Máscara para restrição e formatação dos dados.</kv>
 				<kv name="chars" class="code-prop" type="regExp">Uma expressão regular de validação de teclas válidas.</kv>
-				<kv name="align" class="code-prop" type="choice" mode="block">
+				<kv name="align" class="code-prop" type="choose" mode="block">
 					Alinhamento do texto.
 					<kv name="left" default class="code-data">Alinhado a direita.</kv>
 					<kv name="right" class="code-data">Alinhado a esquerda.</kv>
@@ -339,7 +339,7 @@
 				<kv name="ordering" class="code-prop" type="array[string]">Vetor com nome de colunas que estão ordenadas, ex.: nome asc,idade desc.</kv>
 				<kv name="start-record" class="code-prop" type="natural">Número do registro inicial.</kv>
 				<kv name="end-record" class="code-prop" type="natural">Número do registro final.</kv>
-				<kv name="actions" class="code-prop" type="JSON">Opções de edição do registro, ex: <code>{"Editar" : "http://tempuri.org/icone-editar.png", "Excluir" : "http://tempuri.org/icone-excluir.png"}</code></kv>
+				<kv name="actions" class="code-prop" type="json">Opções de edição do registro, ex: <code>{"Editar" : "http://tempuri.org/icone-editar.png", "Excluir" : "http://tempuri.org/icone-excluir.png"}</code></kv>
 			</kv>
 			<kv name="Métodos" mode="block">
 				<kv name="refresh()" class="code-prop">Submete todos os filtros, ordenação e paginação para a fonte de dados para obter novos registros.</kv>
@@ -360,15 +360,15 @@
 			<kv name="Filhos">Vários.</kv>
 			<kv name="Propriedades" mode="block">
 				<kv name="width" class="code-prop" type="natural">Tamanho padrão da coluna.</kv>
-				<kv name="filter" class="code-prop" type="array">Vetor que determina os filtros aplicados, ex.: % teste (contém teste). Outras operações: >,<,>=,<=,<>,^(inicia com),$(termina com).</kv>
+				<kv name="filter" class="code-prop" type="array[object]">Vetor que determina os filtros aplicados, ex.: % teste (contém teste). Outras operações: >,<,>=,<=,<>,^(inicia com),$(termina com).</kv>
 				<kv name="help-disabled" class="code-prop">Texto de ajuda para a coluna/campo.</kv>
-				<kv name="align" class="code-prop" type="choice" mode="block">
+				<kv name="align" class="code-prop" type="choose" mode="block">
 					Alinhamento dos dados.
 					<kv name="left" default class="code-data">Alinhar à direita.</kv>
 					<kv name="center" class="code-data">Alinhar ao centro.</kv>
 					<kv name="right" class="code-data">Alinhar à esquerda.</kv>
 				</kv>
-				<kv name="overflow" class="code-prop" type="choice" mode="block">
+				<kv name="overflow" class="code-prop" type="choose" mode="block">
 					Modo de tratamento de dados que não cabem na célula.
 					<kv name="suspension" default class="code-data">Adiciona reticências no final.</kv>
 					<kv name="breaking" class="code-data">Quebra a linha e continua embaixo.</kv>
@@ -377,61 +377,43 @@
 			<kv name="Métodos">Padrão HTML.</kv>
 			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		<!--//todo:reavaliar
-		<collapse name="ListCalendar">
+		<collapse name="EventCalendar">
 			<div class="comp-desc">
-				Calendário onde são apresentados os compromissos de forma corrida. Sempre apresenta compromissos da data atual em diante e somente os compromissos preenchidos.
+				Calendário onde são apresentados os eventos de forma corrida. Sempre apresenta eventos da data atual em diante e somente os eventos preenchidos.
 			</div>
 			<kv name="Pai"><comp name="Container"></comp>.</kv>
 			<kv name="Filhos">Nenhum.</kv>
 			<kv name="Propriedades" mode="block">
-				<kv name="src" class="code-data" type="url">Fonte de dados do objeto.</kv>
+				<kv name="src" class="code-prop" type="url">Fonte de dados do objeto, ex.: <code>data:text/json;[{event:"Limpeza Calhas",start:"2018-12-01T08:00"},{event:"Visita",start:"2019-05-01T12:00"}]</code>.</kv>
 				<kv name="mode" class="code-prop" mode="block">
 					Uma das seguintes opções:
 					<kv name="day" class="code-data">Exibição das horas do dia.</kv>
 					<kv name="week" default class="code-data">Exibição dos dias da semana.</kv>
 					<kv name="month" class="code-data">Exibição dos dias do mes.</kv>
 				</kv>
+				<kv name="initial" class="code-prop" type="date">Data onde inicia a exibição do calendário.</kv>
 			</kv>
-			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Métodos" mode="block">
+				<kv name="prepend(array[object])" class="code-prop" mode="block">
+					Adiciona um grupo de eventos no início de 'src':
+					<kv name="array[object]" class="code-data">Um ou mais eventos no mesmo formato da propriedade 'src'.</kv>
+				</kv>
+			</kv>
 			<kv name="Eventos">Padrão HTML.</kv>
-			<kv name="Exemplos" mode="block">
-				<br />
-				<blockquote>
-					<accordion>
-						<collapse name="Uso com dia">
-							<code>&lt;ListCalendar mode="day" src="data:text/json;[{'08:00-09:00':'Limpeza de calhas'}],[{'10:00-12:00':'Reunião Portaria'}]"&gt;&lt;/ListCalendar&gt;</code>
-							<br />
-							<div class="row">
-								<div class="col-3">
-									<ListCalendar mode="day" src='data:text/json;[{"08:00-09:00":"Limpeza de calhas"},{"10:00-12:00":"Reunião Portaria"}]'></ListCalendar>
-								</div>
-							</div>
-						</collapse>
-					</accordion>
-				</blockquote>
-			</kv>
 		</collapse>
-		-->
-		<!--//todo:reavaliar
-		<collapse name="SoftCalendar">
+		<collapse name="Calendar">
 			<div class="comp-desc">
-				Calendário no formato compacto, com opção de destaque de compromissos no dia.
+				Calendário no formato compacto, com opção de destaque de eventos no dia.
 			</div>
 			<kv name="Pai"><comp name="Container"></comp>.</kv>
 			<kv name="Filhos">Nenhum.</kv>
 			<kv name="Propriedades" mode="block">
-				<kv name="week" class="code-prop" mode="choose">
-					Uma das seguintes opções:
-					<kv name="letter" class="code-data">Dias da semana somente letras.</kv>
-					<kv name="abbr" default class="code-data">Dias da semana abreviados.</kv>
-					<kv name="full" class="code-data">Dias da semana por extenso.</kv>
-				</kv>
+				<kv name="src" class="code-prop" type="url">Fonte de dados, ex.: <code>data:text/json;[{start:"2018-12-01T08:00"},{start:"2019-05-01T12:00"}]</code>.</kv>
+				<kv name="initial" class="code-prop" type="date">Data onde inicia a exibição do calendário.</kv>
 			</kv>
 			<kv name="Métodos">Padrão HTML.</kv>
 			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
-		-->
 		<collapse name="Menu">
 			<div class="comp-desc">
 				Menu de links.
@@ -517,7 +499,7 @@
 					<kv name="1" class="code-prop">Controle liberado.</kv>
 				</kv>
 				<kv name="help-disabled" class="code-prop" type="string">Texto de ajuda quando o controle estiver desabilitado.</kv>
-				<kv name="mode" class="code-prop" type="choice" mode="block">
+				<kv name="mode" class="code-prop" type="choose" mode="block">
 					Modo de exibição do editor Html.
 					<kv name="basic" default class="code-data">Configurações mínimas de formatação.</kv>
 				</kv>
@@ -534,9 +516,9 @@
 			<kv name="Propriedades" mode="block">
 				<kv name="name" class="code-prop" type="string">Nome do cartão, título dos dados.</kv>
 				<kv name="image" class="code-prop" type="url">Url para imagem de destaque.</kv>
-				<kv name="key" class="code-prop" type="JSON">Dados chave para localizar o registro, ex: <code>{Id: 1561}</code></kv>
-				<kv name="data" class="code-prop" type="JSON">Dados para exibição, ex: <code>{Nome: "Fulano", Idade: 25}</code></kv>
-				<kv name="actions" class="code-prop" type="JSON">Opções de edição do registro, ex: <code>{"Editar" : "http://tempuri.org/icone-editar.png", "Excluir" : "http://tempuri.org/icone-excluir.png"}</code></kv>
+				<kv name="key" class="code-prop" type="json">Dados chave para localizar o registro, ex: <code>{Id: 1561}</code></kv>
+				<kv name="data" class="code-prop" type="json">Dados para exibição, ex: <code>{Nome: "Fulano", Idade: 25}</code></kv>
+				<kv name="actions" class="code-prop" type="json">Opções de edição do registro, ex: <code>{"Editar" : "http://tempuri.org/icone-editar.png", "Excluir" : "http://tempuri.org/icone-excluir.png"}</code></kv>
 			</kv>
 			<kv name="Métodos">Padrão HTML.</kv>
 			<kv name="Eventos" mode="block">
@@ -559,6 +541,47 @@
 			<kv name="Métodos">Padrão HTML.</kv>
 			<kv name="Eventos">Padrão HTML.</kv>
 		</collapse>
+		<collapse name="Splitter">
+			<div class="comp-desc">
+				Baseado em um 'Container' de dois lados, permite redimensionar parcialmente ou totalmente um dos lados.
+			</div>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Vários.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="direction" class="code-prop" type="choose" mode="block">
+					Determina para qual lado há uma preferência de expansão de painel.
+					<kv name="right" default class="code-prop" type="string">Expande para a direita.</kv>
+					<kv name="left" class="code-prop" type="string">Expande para a esquerda.</kv>
+				</kv>
+				<kv name="proportion" class="code-prop" type="array[var]">Onde 'var' pode ser uma 'unit' ou *, significando que usará o restante do outro painel.</kv>
+			</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
+		</collapse>
+		<collapse name="WeekCalendar">
+			<div class="comp-desc">
+				Calendário onde são apresentados os eventos cruzados entre dia da semana e horário.
+			</div>
+			<kv name="Pai"><comp name="Container"></comp>.</kv>
+			<kv name="Filhos">Nenhum.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="src" class="code-prop" type="url">Fonte de dados do objeto, ex.: <code>data:text/json;[{event:"Limpeza Calhas",start:"2018-12-01T08:00"},{event:"Visita",start:"2019-05-01T12:00"}]</code>.</kv>
+				<kv name="mode" class="code-prop" mode="block">
+					Uma das seguintes opções:
+					<kv name="day" class="code-data">Exibição das horas do dia.</kv>
+					<kv name="week" default class="code-data">Exibição dos dias da semana.</kv>
+					<kv name="month" class="code-data">Exibição dos dias do mes.</kv>
+				</kv>
+				<kv name="initial" class="code-prop" type="date">Data onde inicia a exibição do calendário.</kv>
+			</kv>
+			<kv name="Métodos" mode="block">
+				<kv name="prepend(array[object])" class="code-prop" mode="block">
+					Adiciona um grupo de eventos no início de 'src':
+					<kv name="array[object]" class="code-data">Um ou mais eventos no mesmo formato da propriedade 'src'.</kv>
+				</kv>
+			</kv>
+			<kv name="Eventos">Padrão HTML.</kv>
+		</collapse>
 	</accordion>
 	<spacer len="100"></spacer>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -571,4 +594,20 @@
 //todo: fazer exemplo de componentes.
 //todo: fazer exemplo de estrutura de dados proposta para os controles, de entrada e de saída.
 //todo: revisar colunas do grid e colunas de opções de edição, submete pra onde?
+//todo: fazer dicionário de dados:
+	boolean
+	selector
+	url
+	json
+	array
+	array[var](2)
+	var
+	date
+	string
+	natural
+	choose
+	prop
+	date
+	regExp
+	unit
 -->
