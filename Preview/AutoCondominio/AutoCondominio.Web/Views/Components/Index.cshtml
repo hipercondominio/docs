@@ -1,0 +1,29 @@
+﻿@{
+	ViewData["Title"] = "Components Page";
+}
+@section Head {
+	<link rel="stylesheet" href="~/lib/Splitter/Splitter.css">
+}
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h5 class="card-title">Splitter</h5>
+			<div class="card">
+				<div class="card-body">
+					<Splitter direction="right" proportion="*,30%">
+						<Left>
+							esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda
+						</Left>
+						<Right>
+							direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita
+						</Right>
+					</Splitter>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script src="~/lib/Splitter/Splitter.js"></script>
+}
