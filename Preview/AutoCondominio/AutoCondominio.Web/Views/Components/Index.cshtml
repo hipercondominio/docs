@@ -2,7 +2,8 @@
 	ViewData["Title"] = "Components Page";
 }
 @section Head {
-	<link rel="stylesheet" href="~/lib/Splitter/Splitter.css">
+	<link rel="stylesheet" href="~/lib/jquery.splitter/css/jquery.splitter.css" />
+	<link rel="stylesheet" href="~/css/pages/Components.Index.min.css" />
 }
 <div class="container">
 	<div class="row">
@@ -10,13 +11,17 @@
 			<h5 class="card-title">Splitter</h5>
 			<div class="card">
 				<div class="card-body">
-					<Splitter direction="right" proportion="*,30%">
-						<Left>
-							esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda
-						</Left>
-						<Right>
-							direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita
-						</Right>
+					<Splitter direction="right" proportion="*,33.3%" orientation="vertical">
+						<Panel>
+							<div class="p-1">
+								esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda
+							</div>
+						</Panel>
+						<Panel>
+							<div class="p-1">
+								direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita
+							</div>
+						</Panel>
 					</Splitter>
 				</div>
 			</div>
@@ -25,5 +30,8 @@
 </div>
 
 @section Scripts {
-	<script src="~/lib/Splitter/Splitter.js"></script>
+	<script src="~/lib/jquery.splitter/js/jquery.splitter.js"></script>
+	<script src="~/js/Core.js"></script>
+	<script src="~/js/Core.Components.js"></script>
+	<script src="~/js/Core.Components.Splitter.js"></script>
 }

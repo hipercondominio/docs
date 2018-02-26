@@ -1,6 +1,8 @@
-{
+/*{
+	"compileOnSave": true,
 	"compilerOptions": {
 		"noImplicitAny": true,
+		"allowJs": true,
 		"noEmitOnError": true,
 		"sourceMap": true,
 		"experimentalDecorators": true,
@@ -12,8 +14,8 @@
 			"dom"
 		]
 	},
-	"include": [
-		"**/*"
-	],
-	"compileOnSave": true
+	"exclude": [
+		"node_modules"
+	]
 }
+*/
