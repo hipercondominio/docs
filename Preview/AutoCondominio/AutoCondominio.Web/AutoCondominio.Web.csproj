@@ -439,14 +439,7 @@
     <None Include="wwwroot\lib\bootstrap\_plugins\callout.rb" />
     <None Include="wwwroot\lib\bootstrap\_plugins\example.rb" />
     <None Include="wwwroot\lib\bootstrap\_plugins\markdown-block.rb" />
-    <None Include="wwwroot\lib\jquery.splitter\.gitignore" />
-    <None Include="wwwroot\lib\jquery.splitter\.npmignore" />
-    <None Include="wwwroot\lib\jquery.splitter\css\jquery.splitter.css" />
-    <None Include="wwwroot\lib\jquery.splitter\demo.html" />
-    <None Include="wwwroot\lib\jquery.splitter\js\jquery-1.4.4.min.js" />
-    <None Include="wwwroot\lib\jquery.splitter\js\jquery.splitter.js" />
-    <None Include="wwwroot\lib\jquery.splitter\LICENSE" />
-    <None Include="wwwroot\lib\jquery.splitter\README.md" />
+    <None Include="wwwroot\css\comp\Core.Components.Splitter.css" />
     <None Include="wwwroot\lib\jQuery\.editorconfig" />
     <None Include="wwwroot\lib\jQuery\.eslintignore" />
     <None Include="wwwroot\lib\jQuery\.gitattributes" />
@@ -903,6 +896,10 @@
     <None Include="wwwroot\lib\popper.js\popperjs.png" />
     <None Include="wwwroot\lib\popper.js\README.md" />
     <None Include="wwwroot\lib\popper.js\yarn.lock" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\comp\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

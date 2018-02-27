@@ -5,6 +5,5 @@
     "jQuery": "3.3.1",
     "bootstrap": "v4.0.0",
     "popper.js": "v1.12.9",
-    "jquery.splitter": "0.26.0"
   }
 }

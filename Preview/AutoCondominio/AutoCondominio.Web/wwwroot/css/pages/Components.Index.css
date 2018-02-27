@@ -1,3 +1,61 @@
-﻿Panel {
+﻿* {
+	/*border: 1px solid silver;*/
+}
+
+body, tbody {
+	font-family: Verdana;
+	font-size: small;
+	background-color: ghostwhite;
+}
+
+.comp-desc {
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+.indent-1 {
+	margin-left: 2rem;
+}
+
+.indent-2 {
+	margin-left: 4rem;
+}
+
+code {
+	font-size: medium;
+}
+
+.code-comp {
+	font-family: monospace;
+	font-size: medium;
+	color: blue;
+}
+
+.code-prop > div > b {
+	font-family: monospace;
+	font-size: medium;
+	color: darkgreen;
+}
+
+.code-data > div > b {
+	font-family: monospace;
+	font-size: medium;
+	color: darkred;
+}
+
+.code-data-default {
+	font-family: monospace;
+	font-size: medium;
+	background-color: whitesmoke;
+	padding: 1px 3px;
+	border: 1px solid Silver;
+	cursor: help;
+}
+
+code {
+	font-size: small;
+}
+
+Panel {
 	border: 1pt solid beige;
 }
