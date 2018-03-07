@@ -1,0 +1,10 @@
+cks\:select select[disabled] {
+	cursor: help;
+}
+cks\:select > label {
+	display: inline-block;
+	width: initial;
+	background: none;
+	border: none;
+	padding-right: 0pt;
+}

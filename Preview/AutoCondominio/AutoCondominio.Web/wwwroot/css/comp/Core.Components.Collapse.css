@@ -1,0 +1,33 @@
+cks\:Collapse {
+	display: block;
+}
+
+	cks\:Collapse button {
+		display: inline-block;
+		position: relative;
+	}
+
+	cks\:Collapse button > * {
+		display: inline-block;
+		height: 100%;
+		border: 1px solid red;
+	}
+
+	cks\:Collapse .icon {
+		width: 32pt;
+		height: 32pt;
+	}
+
+	cks\:Collapse .icon path:nth-of-type(2) {
+		fill: Silver;
+	}
+
+	/*//hack: tirar o efeito de link*/
+	cks\:Collapse .btn-link,
+	cks\:Collapse .btn-link:active,
+	cks\:Collapse .btn-link:visited,
+	cks\:Collapse .btn-link:hover {
+		text-decoration-style: none !important;
+		text-decoration: none !important;
+		color: silver;
+	}

@@ -1,24 +1,12 @@
 /// <reference path="Core.js" />
 /// <reference path="Core.Components.js" />
 
-Core.Components.splitter = {//hack: melhorar nomenclatura
-	/**
-	 * Descrição da estrutura
-	 * */
-	Descriptor: {
-		tag: "splitter",
-		parent: null,
-		children: [{ Panel: { ocorrences: { min: 2, max: 2 } } }],
-		properties: {
-			direction: ['left', 'right'],
-			proportion: "array",
-			orientation: ["horizontal", "vertical"],
-		},
-	},
+Core.Components.Splitter = {
 	/**
 	 * Faz a configuração inicial do plugin para os componentes do mesmo tipo.
+	 * @returns {undefined}
 	 * */
-	install: function () {
+	install: () => {
 		/*!
 		 * JQuery Spliter Plugin version 0.26.0
 		 * Copyright (C) 2010-2017 Jakub Jankiewicz <http://jcubic.pl>
@@ -361,46 +349,55 @@ Core.Components.splitter = {//hack: melhorar nomenclatura
 			};
 		})(jQuery);
 	},
+
 	/**
 	 * Efetua o processamento das tags de componente.
-	 * @param selector: Seletor css onde ocorrerá a varredura de transformação.
+	 * @method
+	 * @argument selector Seletor css onde ocorrerá a varredura de transformação.
+	 * @returns {undefined}
 	 * */
-	transform: function (selector) {
+	transform: (selector) => {
 		//hack: adicionar background e alguns comportamentos, como o clique no centro expandir tudo
+		var component = this;
+		$("cks\\:splitter", selector).each(function () {
+			var cksSplitter = this;
 
-		var splitter = $("Splitter:first", selector)[0];//todo: listar todos que não foram transformados
-		Core.Components.importProperties(splitter);
+			///extrair atributos e setar propriedades
+			cksSplitter.proportion = cksSplitter.getAttribute("proportion").split(",");
+			cksSplitter.direction = cksSplitter.getAttribute("direction");
+			cksSplitter.orientation = cksSplitter.getAttribute("orientation");
 
-		var position = null;
-		if (splitter.proportion) {
-			var panelLen = splitter.orientation == 'horizontal' ? splitter.offsetHeight : splitter.offsetWidth;
+			var position = null;
+			if (cksSplitter.proportion) {
+				var panelLen = cksSplitter.orientation == 'horizontal' ? cksSplitter.offsetHeight : cksSplitter.offsetWidth;
 
-			//converter % para px
-			let i = 0;
-			for (let p of splitter.proportion) {
-				if (p.toString().endsWith("%")) {
-					var prop = parseFloat(p);
-					p = panelLen * prop / 100;
-					splitter.proportion[i] = p;
+				//converter % para px
+				let i = 0;
+				for (let p of cksSplitter.proportion) {
+					if (p.toString().endsWith("%")) {
+						var prop = parseFloat(p);
+						p = panelLen * prop / 100;
+						cksSplitter.proportion[i] = p;
+					}
+					i++;
 				}
-				i++;
+
+				if (cksSplitter.proportion[0] == "*") {    //painel 1 é o resto do 2
+					position = panelLen - cksSplitter.proportion[1];
+				} else {
+					position = eval(cksSplitter.proportion[0]);
+				}
 			}
 
-			if (splitter.proportion[0] == "*") {    //painel 1 é o resto do 2
-				position = panelLen - splitter.proportion[1];
-			} else {
-				position = splitter.proportion[0];
-			}
-		}
-
-		$(splitter).height(splitter.offsetHeight).split({
-			orientation: splitter.orientation,
-			limit: 1,
-			position: position, // if there is no percentage it interpret it as pixels
+			$(cksSplitter).height(cksSplitter.offsetHeight).split({
+				orientation: cksSplitter.orientation,
+				limit: 1,
+				position: position, // if there is no percentage it interpret it as pixels
+			});
 		});
 	}
 }
 
-Core.Components.splitter.install();
-Core.Components.splitter.transform("BODY");
+Core.Components.Splitter.install();
+Core.Components.Splitter.transform("BODY");
 

@@ -2,13 +2,34 @@
 	ViewData["Title"] = "Components Page";
 }
 @section Head {
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="~/css/comp/Core.Components.css" />
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Splitter.css" />
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Select.css" />
+	<link rel="stylesheet" href="~/css/comp/Core.Components.Accordion.css" />
+	<link rel="stylesheet" href="~/css/comp/Core.Components.Collapse.css" />
 	<link rel="stylesheet" href="~/css/pages/Components.Index.css" />
 }
 <div class="container">
+
+	<cks:accordion>
+		<cks:collapse header="Chamada 1">
+			Conteúdo 1.
+		</cks:collapse>
+		<cks:collapse header="Chamada 2">
+			Conteúdo 2.
+		</cks:collapse>
+		<cks:collapse header="Chamada 3">
+			Conteúdo 3.
+		</cks:collapse>
+	</cks:accordion>
+
+
+
+</div>
+
+<div class="container">
 	<h1>Core.Components</h1>
-	<hr />
 	<accordion order="name">
 		<collapse name="Container">
 			<div class="comp-desc">
@@ -207,14 +228,14 @@
 			<kv name="Filhos"><comp name="Option"></comp>.</kv>
 			<kv name="Propriedades" mode="block">
 				<kv name="name" class="code-prop" type="string">Nome do controle, usado para gerar o JSON de dados.</kv>
-				<kv name="value" class="code-prop" type="string">Valor do controle, usado para gerar o JSON de dados.</kv>
+				<kv name="value" class="code-prop" type="array">Valor do controle, usado para gerar o JSON de dados. Ex.: <code>obj.value = ["item1", "item3"]</code></kv>
 				<kv name="required" class="code-prop" type="boolean">Força a criação de uma opção 'selecione', obrigando o usuário a trocar.</kv>
 				<kv name="disabled" class="code-prop" type="boolean" mode="block">
 					Determina se o usuário pode iteragir com o controle.
 					<kv name="0" default class="code-prop">Controle bloqueado.</kv>
 					<kv name="1" class="code-prop">Controle liberado.</kv>
 				</kv>
-				<kv name="hide" class="code-prop" type="boolean" mode="block">
+				<kv name="simplify" class="code-prop" type="boolean" mode="block">
 					Determina se o combo vai aparentar um label simples se houver só uma opção.
 					<kv name="0" default class="code-prop">Aparece um select com uma opção.</kv>
 					<kv name="1" class="code-prop">Esconde o select e gera uma label.</kv>
@@ -227,18 +248,28 @@
 				<br />
 				<div class="row">
 					<div class="col-4">
-						<select name="estado" disabled help-disabled="Este select está desativado por exemplo">
+						<div><span class="badge badge-info">disabled</span>+<span class="badge badge-info">helpDisabled</span></div>
+						<cks:select id="selectExemplo1" name="estado" disabled help-disabled="Este select está desativado por exemplo">
 							<optgroup label="Sul">
 								<option value="PR">Paraná</option>
 								<option value="SC">Santa Catarina</option>
 								<option value="RS">Rio Grande do Sul</option>
 							</optgroup>
-						</select>
+						</cks:select>
 					</div>
 					<div class="col-4">
-						<select name="estado" hide>
+						<div><span class="badge badge-info">simplify</span></div>
+						<cks:select id="selectExemplo2" name="estado" simplify>
 							<option value="R">Rua</option>
-						</select>
+						</cks:select>
+					</div>
+					<div class="col-4">
+						<div><span class="badge badge-info">required</span></div>
+						<cks:select id="selectExemplo3" name="items" required>
+							<option value="i1">Item1</option>
+							<option value="i2">Item2</option>
+							<option value="i3">Item3</option>
+						</cks:select>
 					</div>
 				</div>
 			</kv>
@@ -579,7 +610,7 @@
 				<br />
 				<div class="row">
 					<div class="col-12">
-						<Splitter direction="right" proportion="*,33.3%" orientation="vertical">
+						<cks:splitter direction="right" proportion="*,33.3%" orientation="vertical">
 							<Panel>
 								<div class="p-1">
 									esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda esquerda
@@ -590,14 +621,14 @@
 									direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita direita
 								</div>
 							</Panel>
-						</Splitter>
+						</cks:splitter>
 					</div>
 				</div>
 				<br />
 				<div class="row">
 					<div class="col-6">
 						@*//todo:horizontal está com defeito*@
-						<splitter direction="top" proportion="100,*" orientation="horizontal">
+						<cks:splitter direction="top" proportion="100,*" orientation="horizontal">
 							<panel>
 								<div class="p-1">
 									cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima cima
@@ -608,7 +639,7 @@
 									baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo baixo
 								</div>
 							</panel>
-						</splitter>
+						</cks:splitter>
 					</div>
 				</div>
 			</kv>
@@ -647,6 +678,8 @@
 	<script src="~/js/Core.Components.js"></script>
 	<script src="~/js/Core.Components.Splitter.js"></script>
 	<script src="~/js/Core.Components.Select.js"></script>
+	<script src="~/js/Core.Components.Accordion.js"></script>
+	<script src="~/js/Core.Components.Collapse.js"></script>
 }
 <!--
 //todo: fazer exemplo de estrutura de dados proposta para os controles, de entrada e de saída.

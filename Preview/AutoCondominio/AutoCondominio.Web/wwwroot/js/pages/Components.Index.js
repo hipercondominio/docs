@@ -129,30 +129,8 @@ $("spacer").each(function () {
 	$(this).css("height", `${len}px`);
 });
 
-$("ListCalendar").each(function () {
-	
-	//atributos componente
-	var mode = $(this).attr("mode") || "day";
-	var data = JSON.parse($(this).attr("src").split(";", 2)[1]);
-
-	//transformação
-	$(this).wrapInner(`
-		<table class="table table-bordered">
-			<tr>
-				<td colspan='2'>
-					< 08 qui >
-				</td>
-			</tr>
-			<tr>
-				<td>08:00</td><td>Limpeza</td>
-			</tr>
-		</table>
-	`);
-});
-
-
 $(".code-data-default").each(function () {
 	$(this).attr("title", "Padrão");
 });
 
-//todo: fazer esfuminho durante a transformação
+//hack: fazer esfuminho durante a transformação
