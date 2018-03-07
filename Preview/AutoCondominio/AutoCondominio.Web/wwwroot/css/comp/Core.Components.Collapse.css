@@ -3,14 +3,9 @@ cks\:Collapse {
 }
 
 	cks\:Collapse button {
-		display: inline-block;
-		position: relative;
-	}
-
-	cks\:Collapse button > * {
-		display: inline-block;
-		height: 100%;
-		border: 1px solid red;
+		display: flex !important;
+		align-items: center;
+		padding: 0px !important;
 	}
 
 	cks\:Collapse .icon {
@@ -30,4 +25,12 @@ cks\:Collapse {
 		text-decoration-style: none !important;
 		text-decoration: none !important;
 		color: silver;
+	}
+
+	cks\:Collapse .card {
+		border: none;
+	}
+
+	cks\:Collapse .card-header {
+		border-bottom: solid 1pt gainsboro;
 	}
