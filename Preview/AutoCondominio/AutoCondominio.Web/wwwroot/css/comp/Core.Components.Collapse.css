@@ -2,35 +2,26 @@ cks\:Collapse {
 	display: block;
 }
 
-	cks\:Collapse button {
+	cks\:Collapse > div:nth-of-type(1) button {
 		display: flex !important;
 		align-items: center;
 		padding: 0px !important;
 	}
 
-	cks\:Collapse .icon {
-		width: 32pt;
-		height: 32pt;
+	cks\:Collapse > div:nth-of-type(1) .icon {
+		width: 24pt;
+		height: 24pt;
 	}
 
-	cks\:Collapse .icon path:nth-of-type(2) {
+	cks\:Collapse > div:nth-of-type(1) .icon > path:nth-of-type(2) {
 		fill: Silver;
 	}
 
-	/*//hack: tirar o efeito de link*/
-	cks\:Collapse .btn-link,
-	cks\:Collapse .btn-link:active,
-	cks\:Collapse .btn-link:visited,
-	cks\:Collapse .btn-link:hover {
+	cks\:Collapse > div:nth-of-type(1) .btn-link,
+	cks\:Collapse > div:nth-of-type(1) .btn-link:active,
+	cks\:Collapse > div:nth-of-type(1) .btn-link:visited,
+	cks\:Collapse > div:nth-of-type(1) .btn-link:hover {
 		text-decoration-style: none !important;
 		text-decoration: none !important;
 		color: silver;
-	}
-
-	cks\:Collapse .card {
-		border: none;
-	}
-
-	cks\:Collapse .card-header {
-		border-bottom: solid 1pt gainsboro;
 	}

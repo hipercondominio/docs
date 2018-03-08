@@ -12,17 +12,6 @@
 }
 <div class="container">
 
-	<cks:accordion>
-		<cks:collapse header="Chamada 1">
-			Conteúdo 1.
-		</cks:collapse>
-		<cks:collapse header="Chamada 2">
-			Conteúdo 2.
-		</cks:collapse>
-		<cks:collapse header="Chamada 3">
-			Conteúdo 3.
-		</cks:collapse>
-	</cks:accordion>
 
 
 
@@ -116,9 +105,30 @@
 			</div>
 			<kv name="Pai"><comp name="Container"></comp>.</kv>
 			<kv name="Filhos"><comp name="Collapse"></comp>.</kv>
-			<kv name="Propriedades">Padrão HTML.</kv>
+			<kv name="Propriedades" mode="block">
+				<kv name="expand-all" class="code-prop" type="boolean">Determina se aparecerá um botão para expandir todos os filhos.</kv>
+				<kv name="collapse-all" class="code-prop" type="boolean">Determina se aparecerá um botão para recolher todos os filhos.</kv>
+			</kv>
 			<kv name="Métodos">Padrão HTML.</kv>
 			<kv name="Eventos">Padrão HTML.</kv>
+			<kv name="Exemplos" mode="block">
+				<br />
+				<div class="row">
+					<div class="col-4">
+						<cks:accordion expand-all collapse-all>
+							<cks:collapse header="Chamada 1">
+								Conteúdo 1.
+							</cks:collapse>
+							<cks:collapse header="Chamada 2">
+								Conteúdo 2.
+							</cks:collapse>
+							<cks:collapse header="Chamada 3">
+								Conteúdo 3.
+							</cks:collapse>
+						</cks:accordion>
+					</div>
+				</div>
+			</kv>
 		</collapse>
 		<collapse name="Collapse">
 			<div class="comp-desc">
@@ -129,14 +139,30 @@
 			<kv name="Propriedades" mode="block">
 				<kv name="state" class="code-prop" type="string" mode="block">
 					Define se o grupo está aberto ou fechado.
-					<kv name="0" default class="code-data">Fechado.</kv>
-					<kv name="1" class="code-data">Aberto.</kv>
+					<kv name="close" default class="code-data">Fechado.</kv>
+					<kv name="open" class="code-data">Aberto.</kv>
 				</kv>
 			</kv>
-			<kv name="Métodos" mode="block">
-				<kv name="toggle()" class="code-prop" type="string">Altera o agrupador com abertura e fechamento.</kv>
-			</kv>
+			<kv name="Métodos">Padrão HTML.</kv>
 			<kv name="Eventos">Padrão HTML.</kv>
+			<kv name="Exemplos" mode="block">
+				<br />
+				<div class="row">
+					<div class="col-4">
+						<cks:accordion>
+							<cks:collapse header="Chamada 1" state="open">
+								Conteúdo 1.
+							</cks:collapse>
+							<cks:collapse header="Chamada 2">
+								Conteúdo 2.
+							</cks:collapse>
+							<cks:collapse header="Chamada 3">
+								Conteúdo 3.
+							</cks:collapse>
+						</cks:accordion>
+					</div>
+				</div>
+			</kv>
 		</collapse>
 		<collapse name="Label">
 			<div class="comp-desc">

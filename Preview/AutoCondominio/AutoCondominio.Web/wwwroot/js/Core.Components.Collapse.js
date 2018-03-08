@@ -31,7 +31,7 @@ Core.Components.Collapse = {
 					return cksCollapse[_header];
 				},
 				set: (v) => {
-					$("button", cksCollapse).html(v);
+					$("> div > div:nth-of-type(1) button", cksCollapse).html(v);
 					cksCollapse[_header] = v;
 				},
 			});
@@ -42,8 +42,25 @@ Core.Components.Collapse = {
 					return cksCollapse[_contents];
 				},
 				set: (v) => {
-					$("div.card-body", cksCollapse).html(v);
+					$("> div > div:nth-of-type(2) > div.card-body", cksCollapse).html(v);
 					cksCollapse[_contents] = v;
+				},
+			});
+
+			var _state = Symbol("state");
+			cksCollapse[_state] = 'close';  //default
+			Object.defineProperty(cksCollapse, "state", {
+				get: () => {
+					return cksCollapse[_state];
+				},
+				set: (v) => {
+					var old = cksCollapse[_state];
+					if (old == 'close' && v == 'open') {
+						$("> div > div:nth-of-type(2)", cksCollapse).collapse('show')
+					} else if (old == 'open' && v == 'close') {
+						$("> div > div:nth-of-type(2)", cksCollapse).collapse('hide');
+					}
+					cksCollapse[_state] = v;
 				},
 			});
 
@@ -68,7 +85,7 @@ Core.Components.Collapse = {
 									<path d="M0 0h24v24H0z" fill="none"/>
 									<path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
 								</svg>
-								<div>${header}</div>
+								<div class="ml-1">${header}</div>
 							</button>
 						</h5>
 					</div>
@@ -81,13 +98,15 @@ Core.Components.Collapse = {
 			`);
 
 			///eventos
-			$("div.collapse", cksCollapse).on('show.bs.collapse', function (e) {
-				$("button > svg:nth-of-type(1)", cksCollapse).addClass("hide");
-				$("button > svg:nth-of-type(2)", cksCollapse).removeClass("hide");
+			$("> div > div:nth-of-type(2)", cksCollapse).on('show.bs.collapse', function (e) {
+				$("> div .icon:nth-of-type(1)", cksCollapse).addClass("hide");
+				$("> div .icon:nth-of-type(2)", cksCollapse).removeClass("hide");
+				cksCollapse[_state] = 'open';
 			});
-			$("div.collapse", cksCollapse).on('hide.bs.collapse', function (e) {
-				$("button > svg:nth-of-type(1)", cksCollapse).removeClass("hide");
-				$("button > svg:nth-of-type(2)", cksCollapse).addClass("hide");
+			$("> div > div:nth-of-type(2)", cksCollapse).on('hide.bs.collapse', function (e) {
+				$("> div .icon:nth-of-type(1)", cksCollapse).removeClass("hide");
+				$("> div .icon:nth-of-type(2)", cksCollapse).addClass("hide");
+				cksCollapse[_state] = 'close';
 			})
 		});
 	}

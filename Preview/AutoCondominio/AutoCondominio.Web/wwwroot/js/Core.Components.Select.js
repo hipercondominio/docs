@@ -60,7 +60,7 @@ Core.Components.Select = {
 					return $select[0].required;
 				},
 				set: (v) => {
-					if (v && $select[0].options[0].value != "") {
+					if (v && $select[0].options[0].value != "") {//todo: bug, não está tirando o required
 						var option = new Option("(selecione)", "", true);
 						$select.prepend(option);
 					}
@@ -85,7 +85,6 @@ Core.Components.Select = {
 					}
 					cksSelect[_simplify] = v;
 				},
-				//todo: e se tiver mais de uma? o usuário adicionar outra option, simplify não deverá ter efeito
 			});
 
 			var _helpDisabled = Symbol("helpDisabled");
