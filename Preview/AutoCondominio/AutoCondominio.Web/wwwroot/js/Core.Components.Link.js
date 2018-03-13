@@ -75,7 +75,7 @@ Core.Components.Link = {
 
 			///extrair atributos e setar propriedades
 			cksLink.href = cksLink.getAttribute("href");
-			cksLink.target = cksLink.getAttribute("target");
+			cksLink.target = cksLink.getAttribute("target") || "body";
 			cksLink.filter = cksLink.getAttribute("filter");
 
 			///funções internas
@@ -108,3 +108,4 @@ Core.Components.Link = {
 		});
 	}
 }
+//todo: como mapear o erro de http 404 por exemplo

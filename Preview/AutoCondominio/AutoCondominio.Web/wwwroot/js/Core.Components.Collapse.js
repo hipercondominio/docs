@@ -18,7 +18,7 @@ Core.Components.Collapse = {
 	transform: (selector) => {
 		var component = this;
 		var i = 0;  //contador de objetos
-		$("cks\\:collapse", selector).each(function() {
+		$("cks\\:collapse", selector).each(function () {
 			var cksCollapse = this;
 			if (this.ready)  //já foi transformado
 				return;
@@ -89,7 +89,7 @@ Core.Components.Collapse = {
 							</button>
 						</h5>
 					</div>
-					<div id="c${i}" class="collapse show" aria-labelledby="h${i}">
+					<div id="c${i}" class="collapse" aria-labelledby="h${i}">
 						<div class="card-body">
 							${contents}
 						</div>

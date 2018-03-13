@@ -1,0 +1,8 @@
+cks\:breadcrumb {
+	display: block;
+}
+
+	cks\:breadcrumb cks\:link:after {
+		margin: 0 2pt 0 2pt;
+	}
+

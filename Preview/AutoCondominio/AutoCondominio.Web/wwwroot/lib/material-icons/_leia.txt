@@ -1,0 +1,3 @@
+﻿-> baixar svg de https://material.io/icons/#ic_change_history
+-> renomear arquivo conforme padrão
+-> adicionar atributo class="icon"

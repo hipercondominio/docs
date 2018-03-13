@@ -60,9 +60,11 @@ Core.Components.Select = {
 					return $select[0].required;
 				},
 				set: (v) => {
-					if (v && $select[0].options[0].value != "") {//todo: bug, não está tirando o required
+					if (v == true && $select[0].options[0].value != "") {
 						var option = new Option("(selecione)", "", true);
 						$select.prepend(option);
+					} else if (v == false && $select[0].options[0].value == "") {
+						$select.find("option:first").remove();
 					}
 					$select[0].required = v;
 				},
@@ -74,7 +76,7 @@ Core.Components.Select = {
 					return cksSelect[_simplify];
 				},
 				set: (v) => {
-					if (v && $("option", $select).length == 1) {
+					if (v == true && $("option", $select).length == 1) {
 						$select.hide();
 						$label.html($("option:first", $select).text());
 						$label.show();
@@ -86,7 +88,7 @@ Core.Components.Select = {
 					cksSelect[_simplify] = v;
 				},
 			});
-
+			
 			var _helpDisabled = Symbol("helpDisabled");
 			Object.defineProperty(cksSelect, "helpDisabled", {
 				get: () => {

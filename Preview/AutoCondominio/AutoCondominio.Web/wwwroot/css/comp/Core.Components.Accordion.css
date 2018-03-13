@@ -1,9 +1,9 @@
-cks\:accordion {
+cks\:Accordion {
 	display: inline-block;
 	width: 100%;
 }
 
-	cks\:accordion > div:nth-of-type(1) .icon {
+	cks\:Accordion > div:nth-of-type(1) .icon {
 		width: 16pt;
 		height: 16pt;
 		cursor: pointer;

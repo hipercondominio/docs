@@ -25,3 +25,7 @@ cks\:collapse {
 		text-decoration: none !important;
 		color: silver;
 	}
+
+	cks\:Collapse .card-header {
+		border-bottom: solid 1pt gainsboro;
+	}

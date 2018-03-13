@@ -9,9 +9,11 @@
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Accordion.css" />
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Collapse.css" />
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Link.css" />
+	<link rel="stylesheet" href="~/css/comp/Core.Components.Breadcrumb.css" />
 	<link rel="stylesheet" href="~/css/pages/Components.Index.css" />
 }
-<br />
+<div class="container">
+</div>
 <div class="container">
 	<h1>Core.Components</h1>
 	<accordion order="name">
@@ -40,7 +42,7 @@
 			<kv name="Eventos">Padrão HTML.</kv>
 			<kv name="Exemplos" mode="block">
 				<div class="container">
-					<cks:link href="http://localhost:2907/Components" target="#l1" filter="#splitterExemplo1">clique aqui</cks:link><br />
+					<cks:link href="/Components" target="#l1" filter="#splitterExemplo1">clique aqui</cks:link><br />
 					Texto anterior ao link<br />
 					<div id="l1" style="border: inset 1px lightGreen">Área de inserção</div><br />
 					Texto posterior ao link<br />
@@ -52,12 +54,29 @@
 				Listagem de links que aponta uma sequencia de páginas, migalha-de-pão.
 			</div>
 			<kv name="Pai"><comp name="Container"></comp></kv>
-			<kv name="Filhos"><comp name="Link"></comp>, <comp name="Div"></comp></kv>
+			<kv name="Filhos"><comp name="Link"></comp></kv>
 			<kv name="Propriedades" mode="block">
 				<kv name="delimiter" class="code-data" typeof="url">Url para imagem ou texto que separa os links.</kv>
+				<kv name="active" class="code-data" typeof="string">Nome da página atual. Aparecerá no final</kv>
 			</kv>
 			<kv name="Métodos">Padrão HTML.</kv>
 			<kv name="Eventos">Padrão HTML.</kv>
+			<kv name="Exemplos" mode="block">
+				<div class="container">
+					<div class="row">
+						<div class="col-6">
+							<cks:breadcrumb active="Ball xpto" delimiter="/">
+								<cks:link target="#x" href="/components">Home</cks:link>
+								<cks:link href="/products">Products</cks:link>
+								<cks:link href="/products/balls">Balls</cks:link>
+							</cks:breadcrumb>
+						</div>
+						<div id="x" class="col-6">
+						sdfdsf
+						</div>
+					</div>
+				</div>
+			</kv>
 		</collapse>
 		<collapse name="Input">
 			<div class="comp-desc">
@@ -111,7 +130,7 @@
 			<kv name="Exemplos" mode="block">
 				<br />
 				<div class="row">
-					<div class="col-4">
+					<div class="col-6">
 						<cks:accordion expand-all collapse-all>
 							<cks:collapse header="Chamada 1">
 								Conteúdo 1.
@@ -694,8 +713,6 @@
 	</accordion>
 	<spacer len="100"></spacer>
 </div>
-
-
 @section Scripts {
 	<script src="~/js/Pages/Components.Index.js"></script>
 	<script src="~/js/Core.js"></script>
@@ -705,6 +722,7 @@
 	<script src="~/js/Core.Components.Accordion.js"></script>
 	<script src="~/js/Core.Components.Collapse.js"></script>
 	<script src="~/js/Core.Components.Link.js"></script>
+	<script src="~/js/Core.Components.Breadcrumb.js"></script>
 }
 <!--
 //todo: fazer exemplo de estrutura de dados proposta para os controles, de entrada e de saída.

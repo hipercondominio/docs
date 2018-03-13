@@ -17,7 +17,7 @@ Core.Components.Accordion = {
 	 * */
 	transform: (selector) => {
 		var component = this;
-		$("cks\\:accordion", selector).each(function () {
+		$("cks\\:accordion", selector).each(function() {
 			var cksAccordion = this;
 			if (this.ready)  //já foi transformado
 				return;
