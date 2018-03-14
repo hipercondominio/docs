@@ -31,21 +31,21 @@ Core.Components.Breadcrumb = {
 			
 
 			///propriedades
-			var _active = Symbol("active");
+			var _active;
 			Object.defineProperty(cks, "active", {
 				get: () => {
-					return cks[_active];
+					return _active;
 				},
 				set: (v) => {
 					cks.lastChild.innerHTML = v;
-					cks[_active] = v;  //atualizar valor novo
+					_active = v;  //atualizar valor novo
 				},
 			});
 
-			var _delimiter = Symbol("delimiter");
+			var _delimiter;
 			Object.defineProperty(cks, "delimiter", {
 				get: () => {
-					return cks[_delimiter];
+					return _delimiter;
 				},
 				set: (v) => {
 					let content;
@@ -60,7 +60,7 @@ Core.Components.Breadcrumb = {
 							}
 						</style>
 					`);
-					cks[_delimiter] = v;  //atualizar valor novo
+					_delimiter = v;  //atualizar valor novo
 				},
 			});
 

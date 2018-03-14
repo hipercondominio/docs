@@ -70,10 +70,10 @@ Core.Components.Select = {
 				},
 			});
 
-			var _simplify = Symbol("simplify");
+			var _simplify;
 			Object.defineProperty(cksSelect, "simplify", {
 				get: () => {
-					return cksSelect[_simplify];
+					return _simplify;
 				},
 				set: (v) => {
 					if (v == true && $("option", $select).length == 1) {
@@ -85,20 +85,20 @@ Core.Components.Select = {
 						$label.html("");
 						$select.show();
 					}
-					cksSelect[_simplify] = v;
+					_simplify = v;
 				},
 			});
 			
-			var _helpDisabled = Symbol("helpDisabled");
+			var _helpDisabled;
 			Object.defineProperty(cksSelect, "helpDisabled", {
 				get: () => {
-					return cksSelect[_helpDisabled];
+					return _helpDisabled;
 				},
 				set: (v) => {
 					if (cksSelect.disabled) {
 						cksSelect.title = v;
 					}
-					cksSelect[_helpDisabled] = v;
+					_helpDisabled = v;
 				},
 			});
 

@@ -25,33 +25,32 @@ Core.Components.Collapse = {
 			var i = Core.Components.Collapse.counter++;
 
 			///propriedades
-			var _header = Symbol("header");
+			var _header;
 			Object.defineProperty(cksCollapse, "header", {
 				get: () => {
-					return cksCollapse[_header];
+					return _header;
 				},
 				set: (v) => {
 					$(".card-header .htext:first", cksCollapse).html(v);
-					cksCollapse[_header] = v;
+					_header = v;
 				},
 			});
 
-			var _contents = Symbol("contents");
+			var _contents;
 			Object.defineProperty(cksCollapse, "contents", {
 				get: () => {
-					return cksCollapse[_contents];
+					return _contents;
 				},
 				set: (v) => {
 					$(".card-body:first", cksCollapse).html(v);
-					cksCollapse[_contents] = v;
+					_contents = v;
 				},
 			});
 
-			var _state = Symbol("state");
-			cksCollapse[_state] = 'close';  //default
+			var _state = 'close';  //default
 			Object.defineProperty(cksCollapse, "state", {
 				get: () => {
-					return cksCollapse[_state];
+					return _state;
 				},
 				set: (v) => {
 					if (v == 'open') {
@@ -61,7 +60,7 @@ Core.Components.Collapse = {
 						switchIcon(v);
 						$(".collapse:first", cksCollapse).collapse('hide');
 					}
-					cksCollapse[_state] = v;
+					_state = v;
 				},
 			});
 
@@ -101,11 +100,11 @@ Core.Components.Collapse = {
 			///eventos
 			$("> div > div:nth-of-type(2)", cksCollapse).on('show.bs.collapse', function (e) {
 				switchIcon('open');
-				cksCollapse[_state] = 'open';
+				_state = 'open';
 			});
 			$("> div > div:nth-of-type(2)", cksCollapse).on('hide.bs.collapse', function (e) {
 				switchIcon('close');
-				cksCollapse[_state] = 'close';
+				_state = 'close';
 			});
 
 			///funções internas

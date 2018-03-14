@@ -363,6 +363,8 @@ Core.Components.Splitter = {
 			if (this.ready)  //já foi transformado
 				return;
 
+			//todo: fazer propriedades como outros controles
+
 			///extrair atributos e setar propriedades
 
 			var p = cksSplitter.getAttribute("proportion");

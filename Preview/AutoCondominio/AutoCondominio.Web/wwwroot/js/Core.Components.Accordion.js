@@ -23,37 +23,35 @@ Core.Components.Accordion = {
 				return;
 
 			///propriedades
-			var _expandAll = Symbol("expandAll");
-			cksAccordion[_expandAll] = false;  //default
+			var _expandAll = false;  //default
 			Object.defineProperty(cksAccordion, "expandAll", {
 				get: () => {
-					return cksAccordion[_expandAll];
+					return _expandAll;
 				},
 				set: (v) => {
-					var old = cksAccordion[_expandAll];
+					var old = _expandAll;
 					if (old == false && v == true) {
 						$(".expand-all:first", cksAccordion).removeClass("hide");
 					} else if (old == true && v == false) {
 						$(".expand-all:first", cksAccordion).addClass("hide");
 					}
-					cksAccordion[_expandAll] = v;  //atualizar valor novo
+					_expandAll = v;  //atualizar valor novo
 				},
 			});
 
-			var _collapseAll = Symbol("collapseAll");
-			cksAccordion[_collapseAll] = false;  //default
+			var _collapseAll = false;  //default
 			Object.defineProperty(cksAccordion, "collapseAll", {
 				get: () => {
-					return cksAccordion[_collapseAll];
+					return _collapseAll;
 				},
 				set: (v) => {
-					var old = cksAccordion[_collapseAll];
+					var old = _collapseAll;
 					if (old == false && v == true) {
 						$(".collapse-all:first", cksAccordion).removeClass("hide");
 					} else if (old == true && v == false) {
 						$(".collapse-all:first", cksAccordion).addClass("hide");
 					}
-					cksAccordion[_collapseAll] = v;  //atualizar valor novo
+					_collapseAll = v;  //atualizar valor novo
 				},
 			});
 

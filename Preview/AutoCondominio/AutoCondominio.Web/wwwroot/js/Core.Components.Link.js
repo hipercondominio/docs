@@ -17,6 +17,7 @@ Core.Components.Link = {
 	 * */
 	transform: (selector) => {
 		var component = this;
+		var parent = Core.Components;
 		$("cks\\:link", selector).each(function () {
 			var cksLink = this;
 			if (this.ready)  //já foi transformado
@@ -36,13 +37,13 @@ Core.Components.Link = {
 				},
 			});
 
-			var _target = Symbol("target");
+			var _target;
 			Object.defineProperty(cksLink, "target", {
 				get: () => {
-					return cksLink[_target];
+					return _target;
 				},
 				set: (v) => {
-					var old = cksLink[_target];
+					var old = _target;
 					if (v.startsWith("_") || isFrame(v)) {  //nativo ou iframe
 						$("a", cksLink).off("click");
 						$("a", cksLink).attr("target", v);
@@ -50,25 +51,25 @@ Core.Components.Link = {
 						$("a", cksLink).on("click", function () {
 							(async function () {
 								cksLink.beforeLoad();
-								await load(cksLink.href, cksLink.target, cksLink.filter);
-								Core.Components.transformAll(cksLink.target);
+								await parent.loadSrc(cksLink.href, cksLink.target, cksLink.filter);
+								parent.transformAll(cksLink.target);
 								cksLink.afterLoad();
 							})();
 							return false;
 						});
 						$("a", cksLink).removeAttr("target");
 					}
-					cksLink[_target] = v;  //atualizar valor novo
+					_target = v;  //atualizar valor novo
 				},
 			});
 
-			var _filter = Symbol("filter");
+			var _filter;
 			Object.defineProperty(cksLink, "filter", {
 				get: () => {
-					return cksLink[_filter];
+					return _filter;
 				},
 				set: (v) => {
-					cksLink[_filter] = v;  //atualizar valor novo
+					_filter = v;  //atualizar valor novo
 				},
 			});
 
@@ -89,25 +90,6 @@ Core.Components.Link = {
 			 * */
 			function isFrame(name) {
 				return document.querySelector(`IFRAME[name='${name}']`) != null;
-			}
-
-			/**
-			 * Insere um conteúdo externo dentro de um alvo de link.
-			 * @param {string} href Url de origem dos dados.
-			 * @param {string} target Seletor de destino dos dados obtidos.
-			 * @param {string} filter Seletor que delimita a porção dos dados que será inserida.
-			 * @returns {never}
-			 * */
-			async function load(href, target, filter) {
-				console.log(1.1);
-				var contents = await jQuery.get(href);
-				console.log(1.2);
-				if (filter) {
-					var parser = new DOMParser();
-					var doc = parser.parseFromString(contents, "text/html");
-					contents = $(filter, $(doc));
-				}
-				$(target).html(contents);
 			}
 
 			this.ready = true;

@@ -2,6 +2,23 @@
 
 Core.Components = {
 	/**
+	 * Insere um conteúdo externo dentro de um alvo de link.
+	 * @param {string} href  Obrigatório. Url de origem dos dados.
+	 * @param {string} target  Opcional. Seletor de destino dos dados obtidos.
+	 * @param {string} filter  Opcional. Seletor que delimita a porção dos dados que será inserida.
+	 * @returns {never}
+	 * */
+	loadSrc: async (href, target = "BODY", filter) => {
+		var contents = await jQuery.get(href);
+		if (filter) {
+			var parser = new DOMParser();
+			var doc = parser.parseFromString(contents, "text/html");
+			contents = $(filter, $(doc));
+		}
+		$(target).html(contents);
+	},
+
+	/**
 	 * Faz a instalação de todos os componentes utilizados.
 	 * */
 	installAll: () => {
