@@ -32,9 +32,9 @@ Core.Components.Accordion = {
 				set: (v) => {
 					var old = cksAccordion[_expandAll];
 					if (old == false && v == true) {
-						$("> div:nth-of-type(1) span.expand-all", cksAccordion).removeClass("hide");
+						$(".expand-all:first", cksAccordion).removeClass("hide");
 					} else if (old == true && v == false) {
-						$("> div:nth-of-type(1) span.expand-all", cksAccordion).addClass("hide");
+						$(".expand-all:first", cksAccordion).addClass("hide");
 					}
 					cksAccordion[_expandAll] = v;  //atualizar valor novo
 				},
@@ -49,9 +49,9 @@ Core.Components.Accordion = {
 				set: (v) => {
 					var old = cksAccordion[_collapseAll];
 					if (old == false && v == true) {
-						$("> div:nth-of-type(1) span.collapse-all", cksAccordion).removeClass("hide");
+						$(".collapse-all:first", cksAccordion).removeClass("hide");
 					} else if (old == true && v == false) {
-						$("> div:nth-of-type(1) span.collapse-all", cksAccordion).addClass("hide");
+						$(".collapse-all:first", cksAccordion).addClass("hide");
 					}
 					cksAccordion[_collapseAll] = v;  //atualizar valor novo
 				},
@@ -80,12 +80,12 @@ Core.Components.Accordion = {
 			cksAccordion.collapseAll = cksAccordion.getAttribute("collapse-all") == "" ? true : false;
 
 			///eventos
-			$("> div:nth-of-type(1) span.expand-all", cksAccordion).on("click", function () {
+			$(".expand-all:first", cksAccordion).on("click", function () {
 				$("cks\\:collapse", cksAccordion).each(function () {
 					this.state = 'open';
 				});
 			});
-			$("> div:nth-of-type(1) span.collapse-all", cksAccordion).on("click", function () {
+			$(".collapse-all:first", cksAccordion).on("click", function () {
 				$("cks\\:collapse", cksAccordion).each(function () {
 					this.state = 'close';
 				});

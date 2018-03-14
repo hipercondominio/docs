@@ -44,13 +44,16 @@ Core.Components.Link = {
 				set: (v) => {
 					var old = cksLink[_target];
 					if (v.startsWith("_") || isFrame(v)) {  //nativo ou iframe
-						$("a").off("click");
+						$("a", cksLink).off("click");
 						$("a", cksLink).attr("target", v);
 					} else {
-						$("a").on("click", function () {
-							cksLink.beforeLoad();
-							load(cksLink.href, cksLink.target, cksLink.filter);
-							cksLink.afterLoad();
+						$("a", cksLink).on("click", function () {
+							(async function () {
+								cksLink.beforeLoad();
+								await load(cksLink.href, cksLink.target, cksLink.filter);
+								Core.Components.transformAll(cksLink.target);
+								cksLink.afterLoad();
+							})();
 							return false;
 						});
 						$("a", cksLink).removeAttr("target");
@@ -96,12 +99,15 @@ Core.Components.Link = {
 			 * @returns {never}
 			 * */
 			async function load(href, target, filter) {
+				console.log(1.1);
 				var contents = await jQuery.get(href);
-				if (filter)
-					contents = $(filter, $(contents));
+				console.log(1.2);
+				if (filter) {
+					var parser = new DOMParser();
+					var doc = parser.parseFromString(contents, "text/html");
+					contents = $(filter, $(doc));
+				}
 				$(target).html(contents);
-
-				Core.Components.transformAll(target);
 			}
 
 			this.ready = true;

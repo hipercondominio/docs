@@ -7,7 +7,7 @@ Core.Components.Collapse = {
 	 * @returns {never}
 	 * */
 	install: () => {
-
+		Core.Components.Collapse.counter = 0;  //contador global para não repetir ids
 	},
 
 	/**
@@ -17,12 +17,12 @@ Core.Components.Collapse = {
 	 * */
 	transform: (selector) => {
 		var component = this;
-		var i = 0;  //contador de objetos
+		
 		$("cks\\:collapse", selector).each(function () {
 			var cksCollapse = this;
 			if (this.ready)  //já foi transformado
 				return;
-			i++;
+			var i = Core.Components.Collapse.counter++;
 
 			///propriedades
 			var _header = Symbol("header");
@@ -31,7 +31,7 @@ Core.Components.Collapse = {
 					return cksCollapse[_header];
 				},
 				set: (v) => {
-					$("> div > div:nth-of-type(1) button", cksCollapse).html(v);
+					$(".card-header .htext:first", cksCollapse).html(v);
 					cksCollapse[_header] = v;
 				},
 			});
@@ -42,7 +42,7 @@ Core.Components.Collapse = {
 					return cksCollapse[_contents];
 				},
 				set: (v) => {
-					$("> div > div:nth-of-type(2) > div.card-body", cksCollapse).html(v);
+					$(".card-body:first", cksCollapse).html(v);
 					cksCollapse[_contents] = v;
 				},
 			});
@@ -54,19 +54,16 @@ Core.Components.Collapse = {
 					return cksCollapse[_state];
 				},
 				set: (v) => {
-					var old = cksCollapse[_state];
-					if (old == 'close' && v == 'open') {
-						$("> div > div:nth-of-type(2)", cksCollapse).collapse('show')
-					} else if (old == 'open' && v == 'close') {
-						$("> div > div:nth-of-type(2)", cksCollapse).collapse('hide');
+					if (v == 'open') {
+						switchIcon(v);
+						$(".collapse:first", cksCollapse).collapse('show')
+					} else if (v == 'close') {
+						switchIcon(v);
+						$(".collapse:first", cksCollapse).collapse('hide');
 					}
 					cksCollapse[_state] = v;
 				},
 			});
-
-			///extrair atributos e setar propriedades
-			cksCollapse.header = cksCollapse.getAttribute("header");
-			cksCollapse.contents = cksCollapse.innerHTML;
 
 			///transformação
 			var header = cksCollapse.header;
@@ -85,7 +82,7 @@ Core.Components.Collapse = {
 									<path d="M0 0h24v24H0z" fill="none"/>
 									<path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
 								</svg>
-								<div class="ml-1">${header}</div>
+								<div class="ml-1 htext">${header}</div>
 							</button>
 						</h5>
 					</div>
@@ -97,17 +94,34 @@ Core.Components.Collapse = {
 				</div>
 			`);
 
+			///extrair atributos e setar propriedades
+			cksCollapse.header = cksCollapse.getAttribute("header");
+			cksCollapse.state = cksCollapse.getAttribute("state");
+
 			///eventos
 			$("> div > div:nth-of-type(2)", cksCollapse).on('show.bs.collapse', function (e) {
-				$("> div .icon:nth-of-type(1)", cksCollapse).addClass("hide");
-				$("> div .icon:nth-of-type(2)", cksCollapse).removeClass("hide");
+				switchIcon('open');
 				cksCollapse[_state] = 'open';
 			});
 			$("> div > div:nth-of-type(2)", cksCollapse).on('hide.bs.collapse', function (e) {
-				$("> div .icon:nth-of-type(1)", cksCollapse).removeClass("hide");
-				$("> div .icon:nth-of-type(2)", cksCollapse).addClass("hide");
+				switchIcon('close');
 				cksCollapse[_state] = 'close';
 			});
+
+			///funções internas
+			/**
+			 * Faz a manipulação do ícone de estado do collapse.
+			 * @param {string} state  Estado do collapse ('open'|'close').
+			 * */
+			function switchIcon(state) {
+				if (state == 'open') {
+					$(".icon:nth-of-type(1)", cksCollapse).addClass("hide");
+					$(".icon:nth-of-type(2)", cksCollapse).removeClass("hide");
+				} else {
+					$(".icon:nth-of-type(1)", cksCollapse).removeClass("hide");
+					$(".icon:nth-of-type(2)", cksCollapse).addClass("hide");
+				}
+			}
 
 			this.ready = true;
 		});
