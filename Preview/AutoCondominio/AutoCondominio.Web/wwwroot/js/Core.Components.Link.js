@@ -24,10 +24,9 @@ Core.Components.Link = {
 				return;
 
 			///transformação
-			var a = document.createElement("a");
-			$(cksLink).wrapInner(a);
+			$(cksLink).wrapInner("<a>");
 
-			///propriedades
+			///propriedades //hack: usar defineProperties
 			Object.defineProperty(cksLink, "href", {
 				get: () => {
 					return $("a", cksLink).attr("href");
@@ -51,9 +50,9 @@ Core.Components.Link = {
 						$("a", cksLink).on("click", function () {
 							(async function () {
 								cksLink.beforeLoad();
-								await parent.loadSrc(cksLink.href, cksLink.target, cksLink.filter);
+								var data = await parent.loadSrc(cksLink.href, cksLink.target, cksLink.filter);
 								parent.transformAll(cksLink.target);
-								cksLink.afterLoad();
+								cksLink.afterLoad(data);
 							})();
 							return false;
 						});
@@ -75,7 +74,7 @@ Core.Components.Link = {
 
 			///eventos
 			cksLink.beforeLoad = () => { };
-			cksLink.afterLoad = () => { };
+			cksLink.afterLoad = (data) => { };
 
 			///extrair atributos e setar propriedades
 			cksLink.href = cksLink.getAttribute("href");

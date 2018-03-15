@@ -6,16 +6,17 @@ Core.Components = {
 	 * @param {string} href  Obrigatório. Url de origem dos dados.
 	 * @param {string} target  Opcional. Seletor de destino dos dados obtidos.
 	 * @param {string} filter  Opcional. Seletor que delimita a porção dos dados que será inserida.
-	 * @returns {never}
+	 * @returns {string}  Dados recebidos.
 	 * */
 	loadSrc: async (href, target = "BODY", filter) => {
 		var contents = await jQuery.get(href);
 		if (filter) {
 			var parser = new DOMParser();
 			var doc = parser.parseFromString(contents, "text/html");
-			contents = $(filter, $(doc));
+			contents = $(filter, $(doc))[0].outerHTML;
 		}
 		$(target).html(contents);
+		return contents;
 	},
 
 	/**

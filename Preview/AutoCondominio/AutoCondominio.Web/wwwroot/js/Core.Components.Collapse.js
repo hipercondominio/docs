@@ -97,7 +97,7 @@ Core.Components.Collapse = {
 			cksCollapse.header = cksCollapse.getAttribute("header");
 			cksCollapse.state = cksCollapse.getAttribute("state");
 
-			///eventos
+			///eventos manipulados
 			$("> div > div:nth-of-type(2)", cksCollapse).on('show.bs.collapse', function (e) {
 				switchIcon('open');
 				_state = 'open';

@@ -11,9 +11,11 @@
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Link.css" />
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Breadcrumb.css" />
 	<link rel="stylesheet" href="~/css/comp/Core.Components.NotifyIcon.css" />
+	<link rel="stylesheet" href="~/css/comp/Core.Components.Pager.css" />
 	<link rel="stylesheet" href="~/css/pages/Components.Index.css" />
 }
 <div class="container">
+	<cks-pager first previous next last records="17" records-page="5" page="3" pages="3"></cks-pager>
 </div>
 <hr />
 <div class="container">
@@ -36,8 +38,8 @@
 			<kv name="Pai"><comp name="Container"></comp>.</kv>
 			<kv name="Filhos">Texto puro.</kv>
 			<kv name="Propriedades" mode="block">
-				<kv name="href" class="code-prop" type="string">Página html com conteúdo de destino.</kv>
-				<kv name="filter" class="code-prop" type="selectDocumentosor">Seletor que extrai parte do conteúdo HTML quando especificado.</kv>
+				<kv name="href" class="code-prop" type="string">Página html com conteúdo de origem.</kv>
+				<kv name="filter" class="code-prop" type="selector">Seletor que extrai parte do conteúdo HTML quando especificado.</kv>
 				<kv name="target" class="code-prop" type="selector">Seletor que especifica onde será inserido o conteúdo obtido pelo link.</kv>
 			</kv>
 			<kv name="Métodos">Padrão HTML.</kv>
@@ -149,11 +151,12 @@
 		</collapse>
 		<collapse name="Collapse">
 			<div class="comp-desc">
-				Controle que permite esconder ou expandir um grupo de campos.
+				Controle que permite esconder ou expandir um bloco html.
 			</div>
 			<kv name="Pai"><comp name="Container"></comp>.</kv>
 			<kv name="Filhos">Vários.</kv>
 			<kv name="Propriedades" mode="block">
+				<kv name="header" class="code-prop" type="string">Cabeçalho de chamada do bloco.</kv>
 				<kv name="state" class="code-prop" type="string" mode="block">
 					Define se o grupo está aberto ou fechado.
 					<kv name="close" default class="code-data">Fechado.</kv>
@@ -418,7 +421,7 @@
 				<kv name="first" class="code-prop" type="boolean">Determina se aparecerá o botão ir para início.</kv>
 				<kv name="last" class="code-prop" type="boolean">Determina se aparecerá o botão ir para fim.</kv>
 				<kv name="next" class="code-prop" type="boolean">Determina se aparecerá o botão ir para próximo.</kv>
-				<kv name="prev" class="code-prop" type="boolean">Determina se aparecerá o botão ir para anterior.</kv>
+				<kv name="previous" class="code-prop" type="boolean">Determina se aparecerá o botão ir para anterior.</kv>
 				<kv name="records" class="code-prop" type="natural">Total de registros.</kv>
 				<kv name="records-page" class="code-prop" type="natural">Total de registros por página.</kv>
 				<kv name="page" class="code-prop" type="natural">Página atual.</kv>
@@ -426,7 +429,7 @@
 			</kv>
 			<kv name="Métodos">Padrão HTML.</kv>
 			<kv name="Eventos">
-				<kv name="pageChanged(page)" class="code-prop" mode="block">
+				<kv name="onpage(page)" class="code-prop" mode="block">
 					Ocorre quando o usuário clica em uma página.
 					<kv name="page" class="code-data" type="natural">Número da página nova.</kv>
 				</kv>
@@ -696,7 +699,6 @@
 				<br />
 				<div class="row">
 					<div class="col-6">
-						@*//todo:horizontal está com defeito*@
 						<cks-splitter id="splitterExemplo2" direction="top" proportion="100,*" orientation="horizontal">
 							<cks-panel>
 								<div class="p-1">
@@ -751,6 +753,7 @@
 	<script src="~/js/Core.Components.Link.js"></script>
 	<script src="~/js/Core.Components.Breadcrumb.js"></script>
 	<script src="~/js/Core.Components.NotifyIcon.js"></script>
+	<script src="~/js/Core.Components.Pager.js"></script>
 }
 <!--
 //todo: fazer exemplo de estrutura de dados proposta para os controles, de entrada e de saída.

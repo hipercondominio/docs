@@ -77,7 +77,7 @@ Core.Components.Accordion = {
 			cksAccordion.expandAll = cksAccordion.getAttribute("expand-all") == "" ? true : false;
 			cksAccordion.collapseAll = cksAccordion.getAttribute("collapse-all") == "" ? true : false;
 
-			///eventos
+			///eventos manipulados
 			$(".expand-all:first", cksAccordion).on("click", function () {
 				$("cks-collapse", cksAccordion).each(function () {
 					this.state = 'open';

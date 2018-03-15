@@ -24,11 +24,11 @@ Core.Components.NotifyIcon = {
 				return;
 
 			///transformação
-			var $a = $(cks).wrapInner(`
+			$(cks).wrapInner(`
 				<a><span class="badge badge-pill badge-primary hide"></span>
 					<img />
 					<div class="legend"></div></a>
-			`);  //a última classe é usada posicionamente adiante
+			`);
 
 			///propriedades
 			Object.defineProperty(cks, "href", {

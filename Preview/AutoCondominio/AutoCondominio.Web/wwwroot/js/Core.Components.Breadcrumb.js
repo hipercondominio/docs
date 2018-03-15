@@ -65,15 +65,9 @@ Core.Components.Breadcrumb = {
 			});
 
 
-			///eventos
-			//nenhum
-
 			///extrair atributos e setar propriedades
 			cks.delimiter = cks.getAttribute("delimiter");
 			cks.active = cks.getAttribute("active");
-
-			///funções internas
-			//nada
 
 			this.ready = true;
 		});
