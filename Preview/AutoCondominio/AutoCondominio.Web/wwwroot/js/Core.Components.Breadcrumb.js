@@ -17,7 +17,7 @@ Core.Components.Breadcrumb = {
 	 * */
 	transform: (selector) => {
 		var component = this;
-		$("cks\\:breadcrumb", selector).each(function () {
+		$("cks-breadcrumb", selector).each(function () {
 			var cks = this;
 			if (this.ready)  //já foi transformado
 				return;
@@ -55,7 +55,7 @@ Core.Components.Breadcrumb = {
 						content = `'${v}'`;
 					$("head").append(`
 						<style id="breadcrumb" type="text/css">
-							cks\\:breadcrumb > cks\\:link:after {
+							cks-breadcrumb > cks-link:after {
 								content: ${content};
 							}
 						</style>

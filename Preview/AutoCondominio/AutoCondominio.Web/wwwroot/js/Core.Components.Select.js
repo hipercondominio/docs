@@ -17,7 +17,7 @@ Core.Components.Select = {
 	 * */
 	transform: (selector) => {
 		var component = this;
-		$("cks\\:select", selector).each(function() {
+		$("cks-select", selector).each(function() {
 			var cksSelect = this;
 			if (this.ready)  //já foi transformado
 				return;

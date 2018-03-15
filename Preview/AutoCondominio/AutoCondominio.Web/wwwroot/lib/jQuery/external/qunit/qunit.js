@@ -260,7 +260,7 @@ var config = {
 		tests: []
 	},
 
-	callbacks: {}
+	callbacks- {}
 };
 
 // Push a loose unnamed module to the modules collection

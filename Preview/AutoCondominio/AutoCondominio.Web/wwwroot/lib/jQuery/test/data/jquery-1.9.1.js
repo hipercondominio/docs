@@ -1435,7 +1435,7 @@ jQuery.support = ( function() {
 		deleteExpando: true,
 		noCloneEvent: true,
 		inlineBlockNeedsLayout: false,
-		shrinkWrapBlocks: false,
+		shrinkWrapBlocks- false,
 		reliableMarginRight: true,
 		boxSizingReliable: true,
 		pixelPosition: false

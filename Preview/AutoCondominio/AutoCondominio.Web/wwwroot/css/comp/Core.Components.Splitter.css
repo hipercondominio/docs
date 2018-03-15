@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  //hack: melhorar a nomenclatura e delimitar melhor os componentes.
  */
-cks\:splitter {
+cks-splitter {
 	display: flex;
 	position: relative;
 }

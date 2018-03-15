@@ -17,7 +17,7 @@ Core.Components.Accordion = {
 	 * */
 	transform: (selector) => {
 		var component = this;
-		$("cks\\:accordion", selector).each(function() {
+		$("cks-accordion", selector).each(function() {
 			var cksAccordion = this;
 			if (this.ready)  //já foi transformado
 				return;
@@ -79,12 +79,12 @@ Core.Components.Accordion = {
 
 			///eventos
 			$(".expand-all:first", cksAccordion).on("click", function () {
-				$("cks\\:collapse", cksAccordion).each(function () {
+				$("cks-collapse", cksAccordion).each(function () {
 					this.state = 'open';
 				});
 			});
 			$(".collapse-all:first", cksAccordion).on("click", function () {
-				$("cks\\:collapse", cksAccordion).each(function () {
+				$("cks-collapse", cksAccordion).each(function () {
 					this.state = 'close';
 				});
 			});

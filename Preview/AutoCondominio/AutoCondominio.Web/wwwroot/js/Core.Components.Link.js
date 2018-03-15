@@ -18,7 +18,7 @@ Core.Components.Link = {
 	transform: (selector) => {
 		var component = this;
 		var parent = Core.Components;
-		$("cks\\:link", selector).each(function () {
+		$("cks-link", selector).each(function () {
 			var cksLink = this;
 			if (this.ready)  //já foi transformado
 				return;

@@ -18,7 +18,7 @@ Core.Components.Collapse = {
 	transform: (selector) => {
 		var component = this;
 		
-		$("cks\\:collapse", selector).each(function () {
+		$("cks-collapse", selector).each(function () {
 			var cksCollapse = this;
 			if (this.ready)  //já foi transformado
 				return;

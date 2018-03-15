@@ -18,15 +18,17 @@ Core.Components.NotifyIcon = {
 	transform: (selector) => {
 		var component = this;
 		var parent = Core.Components;
-		$("cks\\:notify-icon", selector).each(function () {
+		$("cks-notify-icon", selector).each(function () {
 			var cks = this;
 			if (this.ready)  //já foi transformado
 				return;
 
 			///transformação
 			var $a = $(cks).wrapInner(`
-				<a><span class="badge badge-pill badge-primary hide"></span></a>
-			`);
+				<a><span class="badge badge-pill badge-primary hide"></span>
+					<img />
+					<div class="legend"></div></a>
+			`);  //a última classe é usada posicionamente adiante
 
 			///propriedades
 			Object.defineProperty(cks, "href", {
@@ -44,13 +46,7 @@ Core.Components.NotifyIcon = {
 					return _url;
 				},
 				set: (v) => {
-					$("img", cks).remove();
-					var $img = $("a", cks).append(`<img src="${v}" />`).find("img");
-					if (cks.width)
-						$img.attr("width", cks.width);
-					if (cks.height)
-						$img.attr("height", cks.height);
-
+					$("img", cks).attr("src", v);
 					_url = v;  //atualizar valor novo
 				},
 			});
@@ -125,18 +121,48 @@ Core.Components.NotifyIcon = {
 				},
 			});
 
-			var _counter = 0;
-			Object.defineProperty(cks, "counter", {
+			var _count = 0;
+			Object.defineProperty(cks, "count", {
 				get: () => {
-					return _counter;
+					return _count;
 				},
 				set: (v) => {
+					var $badge = $(".badge", cks);
+					$badge.text(v);
 					if (v > 0) {
-						$(".badge", cks).show();
+						$badge.removeClass("hide");
+					} else {
+						$badge.addClass("hide");
 					}
-					_counter = v;  //atualizar valor novo
+					_count = v;  //atualizar valor novo
 				},
 			});
+
+			var _style = "primary";
+			Object.defineProperty(cks, "style", {
+				get: () => {
+					return _style;
+				},
+				set: (v) => {
+					$(".badge", cks)
+						.removeClass(`badge-${_style}`)
+						.addClass(`badge-${v}`);
+					_style = v;  //atualizar valor novo
+				},
+			});
+
+			var _legend;
+			Object.defineProperty(cks, "legend", {
+				get: () => {
+					return _legend;
+				},
+				set: (v) => {
+					$("div", cks).text(v);
+
+					_legend = v;  //atualizar valor novo
+				},
+			});
+
 
 			///eventos
 			cks.beforeLoad = () => { };
@@ -150,6 +176,9 @@ Core.Components.NotifyIcon = {
 			cks.size = cks.getAttribute("size") || "24pt";
 			cks.width = cks.getAttribute("width");
 			cks.height = cks.getAttribute("height");
+			cks.count = cks.getAttribute("count") || 0;
+			cks.style = cks.getAttribute("style") || "primary";
+			cks.legend = cks.getAttribute("legend");
 
 			///funções internas
 			/**
@@ -176,3 +205,4 @@ Core.Components.NotifyIcon = {
 	}
 }
 //todo: como mapear o erro de http 404 por exemplo
+//todo: herança de Link para esse controle

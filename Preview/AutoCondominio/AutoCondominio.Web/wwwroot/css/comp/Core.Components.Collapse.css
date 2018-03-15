@@ -1,31 +1,31 @@
-cks\:collapse {
+cks-collapse {
 	display: block;
 }
 
-	cks\:collapse > div:nth-of-type(1) button {
+	cks-collapse > div:nth-of-type(1) button {
 		display: flex !important;
 		align-items: center;
 		padding: 0px !important;
 	}
 
-	cks\:collapse > div:nth-of-type(1) .icon {
+	cks-collapse > div:nth-of-type(1) .icon {
 		width: 24pt;
 		height: 24pt;
 	}
 
-		cks\:collapse > div:nth-of-type(1) .icon > path:nth-of-type(2) {
+		cks-collapse > div:nth-of-type(1) .icon > path:nth-of-type(2) {
 			fill: Silver;
 		}
 
-	cks\:collapse > div:nth-of-type(1) .btn-link,
-	cks\:collapse > div:nth-of-type(1) .btn-link:active,
-	cks\:collapse > div:nth-of-type(1) .btn-link:visited,
-	cks\:collapse > div:nth-of-type(1) .btn-link:hover {
+	cks-collapse > div:nth-of-type(1) .btn-link,
+	cks-collapse > div:nth-of-type(1) .btn-link:active,
+	cks-collapse > div:nth-of-type(1) .btn-link:visited,
+	cks-collapse > div:nth-of-type(1) .btn-link:hover {
 		text-decoration-style: none !important;
 		text-decoration: none !important;
 		color: silver;
 	}
 
-	cks\:Collapse .card-header {
+	cks-Collapse .card-header {
 		border-bottom: solid 1pt gainsboro;
 	}

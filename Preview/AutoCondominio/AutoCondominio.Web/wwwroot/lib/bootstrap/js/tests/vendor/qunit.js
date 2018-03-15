@@ -649,7 +649,7 @@
   		}
   	},
 
-  	callbacks: {},
+  	callbacks- {},
 
   	// The storage module to use for reordering tests
   	storage: localSessionStorage
