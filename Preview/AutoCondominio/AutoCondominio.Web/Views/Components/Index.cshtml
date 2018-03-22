@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="~/css/pages/Components.Index.css" />
 }
 <div class="container">
-	<cks-pager first previous next last records="17" records-page="5" page="3" pages="3"></cks-pager>
+	<cks-pager first previous next last records="10" records-page="1" page="2" page-show="5"></cks-pager>
 </div>
 <hr />
 <div class="container">
@@ -425,11 +425,12 @@
 				<kv name="records" class="code-prop" type="natural">Total de registros.</kv>
 				<kv name="records-page" class="code-prop" type="natural">Total de registros por página.</kv>
 				<kv name="page" class="code-prop" type="natural">Página atual.</kv>
-				<kv name="pages" class="code-prop" type="natural">Máximo de páginas que aparecem para uma ser selecionada.</kv>
+				<kv name="page-show" class="code-prop" type="natural">Máximo de páginas que aparecem para clicar.</kv>
+				<kv name="pages" class="code-prop" type="natuarl">Somente leitura. Retorna o total de páginas disponíveis.</kv>
 			</kv>
 			<kv name="Métodos">Padrão HTML.</kv>
-			<kv name="Eventos">
-				<kv name="onpage(page)" class="code-prop" mode="block">
+			<kv name="Eventos" mode="block">
+				<kv name="paging(page)" class="code-prop" mode="block">
 					Ocorre quando o usuário clica em uma página.
 					<kv name="page" class="code-data" type="natural">Número da página nova.</kv>
 				</kv>

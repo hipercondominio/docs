@@ -14,7 +14,7 @@ cks-collapse {
 	}
 
 		cks-collapse > div:nth-of-type(1) .icon > path:nth-of-type(2) {
-			fill: Silver;
+			fill: gray;
 		}
 
 	cks-collapse > div:nth-of-type(1) .btn-link,
@@ -23,7 +23,7 @@ cks-collapse {
 	cks-collapse > div:nth-of-type(1) .btn-link:hover {
 		text-decoration-style: none !important;
 		text-decoration: none !important;
-		color: silver;
+		color: gray;
 	}
 
 	cks-Collapse .card-header {
