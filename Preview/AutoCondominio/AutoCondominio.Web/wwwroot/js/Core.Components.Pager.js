@@ -71,7 +71,7 @@ Core.Components.Pager = {
 						return _page;
 					},
 					set: (v) => {
-						_page = Math.min(v, cks.pages);
+						_page = Math.limit(v, 1, cks.pages);
 						window.setTimeout(() => {
 							refresh();
 						});
@@ -223,11 +223,7 @@ Core.Components.Pager = {
 				}
 
 				//ajustar páginas limite mínimo e máximo
-				var minStart = 1;  //valor mínimo que start pode ter
-				var maxStart = cks.pages - cks.pageShow + 1;  //valor máximo que start pode ter
-				var start = cks.page - midPoint;
-				if (start < minStart) start = minStart;
-				if (start > maxStart) start = maxStart;
+				var start = Math.limit(cks.page - midPoint, 1, cks.pages - cks.pageShow + 1);
 				var end = start + show - 1;
 
 				//remover antigo template de active
@@ -255,7 +251,7 @@ Core.Components.Pager = {
 				var $link = $(e.target);
 				if ($link.hasClass("first")) {
 					cks.page = 1;
-				} else if ($link.hasClass("prev")) {
+				} else if ($link.hasClass("previous")) {
 					--cks.page;
 				} else if ($link.hasClass("next")) {
 					++cks.page;
