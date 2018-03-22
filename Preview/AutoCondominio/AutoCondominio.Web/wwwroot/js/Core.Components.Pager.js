@@ -159,15 +159,6 @@ Core.Components.Pager = {
 
 			var _url;
 
-			///eventos externos
-			/**
-			 * Ocorre quando muda a página atual.
-			 * @param {number} old  Página anterior.
-			 * @param {number} active  Página atual.
-			 * @returns {never}
-			 */
-			cks.paging = (page) => { };
-
 			///extrair atributos e setar propriedades
 			cks.first = cks.getAttribute("first") == "" ? true : false;
 			cks.previous = cks.getAttribute("previous") == "" ? true : false;
@@ -177,6 +168,15 @@ Core.Components.Pager = {
 			cks.recordsPage = parseInt(cks.getAttribute("records-page")) || 0;
 			cks.page = parseInt(cks.getAttribute("page")) || 1;
 			cks.pageShow = parseInt(cks.getAttribute("page-show")) || 3;
+
+			///eventos
+			/**
+			 * Ocorre quando muda a página atual.
+			 * @param {number} old  Página anterior.
+			 * @param {number} active  Página atual.
+			 * @returns {never}
+			 */
+			cks.paging = new Function("page", cks.getAttribute("onpaging"));
 
 			///funções internas
 			/**

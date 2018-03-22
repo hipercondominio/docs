@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="~/css/pages/Components.Index.css" />
 }
 <div class="container">
-	<cks-pager first previous next last records="30" records-page="3" page="2" page-show="3"></cks-pager>
+	
 </div>
 <hr />
 <div class="container">
@@ -434,6 +434,21 @@
 					Ocorre quando o usuário clica em uma página.
 					<kv name="page" class="code-data" type="natural">Número da página nova.</kv>
 				</kv>
+			</kv>
+			<kv name="Exemplos" mode="block">
+				<br />
+				<div class="row">
+					<div class="col-4">
+						<cks-pager first previous next last records="30" records-page="3" page="2" page-show="3"></cks-pager>
+					</div>
+					<div class="col-4">
+						<cks-pager previous next records="10" records-page="2" page="1" page-show="5"></cks-pager>
+					</div>
+					<div class="col-4">
+						<cks-pager first previous next last records="30" records-page="3" page="2" page-show="3" onpaging="alert(page)"></cks-pager>
+					</div>
+				</div>
+
 			</kv>
 		</collapse>
 		<collapse name="TextTemplate">
