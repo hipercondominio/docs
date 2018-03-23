@@ -2,7 +2,6 @@
 	ViewData["Title"] = "Components Page";
 }
 @section Head {
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="~/css/comp/Core.Components.css" />
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Splitter.css" />
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Select.css" />
@@ -12,10 +11,11 @@
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Breadcrumb.css" />
 	<link rel="stylesheet" href="~/css/comp/Core.Components.NotifyIcon.css" />
 	<link rel="stylesheet" href="~/css/comp/Core.Components.Pager.css" />
+	<link rel="stylesheet" href="~/css/comp/Core.Components.Text.css" />
 	<link rel="stylesheet" href="~/css/pages/Components.Index.css" />
 }
 <div class="container">
-	
+
 </div>
 <hr />
 <div class="container">
@@ -81,16 +81,17 @@
 				</div>
 			</kv>
 		</collapse>
-		<collapse name="Input">
+		<collapse name="Text">
 			<div class="comp-desc">
-				Equivale ao 'INPUT' do Html. Identico ao Html, adicionado dos recursos abaixo.
+				Equivale ao 'INPUT[type=text]' do Html. Identico ao Html, adicionado dos recursos abaixo.
 			</div>
 			<kv name="Pai"><comp name="Container"></comp>.</kv>
 			<kv name="Filhos">Nenhum.</kv>
 			<kv name="Propriedades" mode="block">
+				<kv name="tab-index" class="code-prop" type="natural">Similar a tabindex, define a ordem de tabulação.</kv>
 				<kv name="name" class="code-prop" type="string">Nome do controle, usado para gerar o JSON de dados.</kv>
 				<kv name="value" class="code-prop" type="string">Valor do controle, usado para gerar o JSON de dados.</kv>
-				<kv name="disabled" class="code-prop" type="string" mode="block">
+				<kv name="disabled" class="code-prop" type="boolean" mode="block">
 					Determina se o usuário pode iteragir com o controle.
 					<kv name="0" default class="code-prop" type="string">Controle bloqueado.</kv>
 					<kv name="1" class="code-prop" type="string">Controle liberado.</kv>
@@ -105,8 +106,35 @@
 					<kv name="right" class="code-data">Alinhado a esquerda.</kv>
 				</kv>
 			</kv>
-			<kv name="Métodos">Padrão HTML.</kv>
-			<kv name="Eventos">Padrão HTML.</kv>
+			<kv name="Métodos" mode="block">
+				<kv name="focus()" class="code-prop">Desloca o foco para dentro do componente.</kv>
+				<kv name="blur()" class="code-prop">Desloca o foco para fora do componente.</kv>
+			</kv>
+			<kv name="Eventos" mode="block">
+				<kv name="focus" class="code-prop">Ocorre quando o componente recebe o foco.</kv>
+				<kv name="blur" class="code-prop">Ocorre quando o componente perde o foco.</kv>
+			</kv>
+			<kv name="Exemplos" mode="block">
+				<br />
+				<div class="row">
+					<div class="col-3">
+						<div><span class="badge badge-info">readonly</span></div>
+						<cks-text name="teste" readonly value="teste"></cks-text>
+					</div>
+					<div class="col-3">
+						<div><span class="badge badge-info">mask</span></div>
+						<cks-text name="telefone" value="41991980082" mask="(99) 99999-9999"></cks-text>
+					</div>
+					<div class="col-3">
+						<div><span class="badge badge-info">chars (somente letras)</span></div>
+						<cks-text name="nome" placeholder="digite seu nome" chars="a-z A-Z" pattern="[a-zA-Z]{3,}( [a-zA-Z]{3,})*"></cks-text>
+					</div>
+					<div class="col-3">
+						<div><span class="badge badge-info">chars (somente números)</span>+<span class="badge badge-info">align</span></div>
+						<cks-text name="idade" placeholder="idade" chars="0-9" align="right"></cks-text>
+					</div>
+				</div>
+			</kv>
 		</collapse>
 		<collapse name="InputGroup">
 			<div class="comp-desc">
@@ -426,7 +454,7 @@
 				<kv name="records-page" class="code-prop" type="natural">Total de registros por página.</kv>
 				<kv name="page" class="code-prop" type="natural">Página atual.</kv>
 				<kv name="page-show" class="code-prop" type="natural">Máximo de páginas que aparecem para clicar.</kv>
-				<kv name="pages" class="code-prop" type="natuarl">Somente leitura. Retorna o total de páginas disponíveis.</kv>
+				<kv name="pages" class="code-prop" type="natural">Somente leitura. Retorna o total de páginas disponíveis.</kv>
 			</kv>
 			<kv name="Métodos">Padrão HTML.</kv>
 			<kv name="Eventos" mode="block">
@@ -445,7 +473,7 @@
 						<cks-pager previous next records="10" records-page="2" page="1" page-show="5"></cks-pager>
 					</div>
 					<div class="col-4">
-						<cks-pager first previous next last records="30" records-page="3" page="2" page-show="3" onpaging="alert(page)"></cks-pager>
+						<cks-pager first previous next last records="30" records-page="3" page="1" page-show="2" onpaging="alert(page)"></cks-pager>
 					</div>
 				</div>
 
@@ -759,6 +787,7 @@
 	<spacer len="100"></spacer>
 </div>
 @section Scripts {
+	<script src="~/lib/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 	<script src="~/js/Pages/Components.Index.js"></script>
 	<script src="~/js/Core.js"></script>
 	<script src="~/js/Core.Components.js"></script>
@@ -770,6 +799,7 @@
 	<script src="~/js/Core.Components.Breadcrumb.js"></script>
 	<script src="~/js/Core.Components.NotifyIcon.js"></script>
 	<script src="~/js/Core.Components.Pager.js"></script>
+	<script src="~/js/Core.Components.Text.js"></script>
 }
 <!--
 //todo: fazer exemplo de estrutura de dados proposta para os controles, de entrada e de saída.

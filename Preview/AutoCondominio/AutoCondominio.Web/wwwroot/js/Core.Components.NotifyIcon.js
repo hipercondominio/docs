@@ -16,7 +16,6 @@ Core.Components.NotifyIcon = {
 	 * @returns {never}
 	 * */
 	transform: (selector) => {
-		var component = this;
 		var parent = Core.Components;
 		$("cks-notify-icon", selector).each(function () {
 			var cks = this;

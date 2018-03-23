@@ -16,14 +16,11 @@ Core.Components.Pager = {
 	 * @returns {never}
 	 * */
 	transform: (selector) => {
-		var component = this;
 		var parent = Core.Components;
 		$("cks-pager", selector).each(function () {
 			var cks = this;
 			if (this.ready)  //já foi transformado
 				return;
-
-			var current = `<li class="page-item"><a class="page-link"><span class="sr-only">0</span></a></li>`
 
 			///transformação
 			$(cks).wrapInner(`
@@ -157,8 +154,6 @@ Core.Components.Pager = {
 				},
 			});
 
-			var _url;
-
 			///extrair atributos e setar propriedades
 			cks.first = cks.getAttribute("first") == "" ? true : false;
 			cks.previous = cks.getAttribute("previous") == "" ? true : false;
@@ -189,7 +184,7 @@ Core.Components.Pager = {
 				if (show > cks.pages)
 					show = cks.pages;
 
-				var showed = $("li:not(.fix)").length;  //verificar o número de páginas exibidas
+				var showed = $("li:not(.fix)", cks).length;  //verificar o número de páginas exibidas
 				if (showed == show)
 					return;  //nada mudou
 
@@ -217,9 +212,12 @@ Core.Components.Pager = {
 				if (show > cks.pages)
 					show = cks.pages;
 
+				//ajustar o ponto médio da página ativa
 				var midPoint = show / 2;
 				if (midPoint != Math.trunc(midPoint)) {  //se for número racional, arredondar pra baixo
 					midPoint = Math.floor(midPoint);
+				} else {
+					midPoint--;
 				}
 
 				//ajustar páginas limite mínimo e máximo

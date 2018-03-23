@@ -16,7 +16,6 @@ Core.Components.Breadcrumb = {
 	 * @returns {never}
 	 * */
 	transform: (selector) => {
-		var component = this;
 		$("cks-breadcrumb", selector).each(function () {
 			var cks = this;
 			if (this.ready)  //já foi transformado

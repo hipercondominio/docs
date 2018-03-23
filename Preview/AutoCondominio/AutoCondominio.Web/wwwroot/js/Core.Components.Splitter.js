@@ -357,7 +357,6 @@ Core.Components.Splitter = {
 	 * */
 	transform: (selector) => {
 		//hack: adicionar background e alguns comportamentos, como o clique no centro expandir tudo
-		var component = this;
 		$("cks-splitter", selector).each(function () {
 			var cksSplitter = this;
 			if (this.ready)  //já foi transformado
