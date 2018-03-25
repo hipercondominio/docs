@@ -22,9 +22,9 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/lib/core/Core.Components.Splitter.min.js",
+    "outputFileName": "wwwroot/lib/core/Cks.Components.Splitter.min.js",
     "inputFiles": [
-      "wwwroot/lib/core/Core.Components.Splitter.js"
+      "wwwroot/lib/core/Cks.Components.Splitter.js"
     ]
   },
   {

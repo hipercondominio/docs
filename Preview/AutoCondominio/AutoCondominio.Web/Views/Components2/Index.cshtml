@@ -1,0 +1,27 @@
+﻿@{
+	ViewData["Title"] = "Components Page";
+}
+@section Head {
+	<script src="https://polygit.org/components/webcomponentsjs/webcomponents-loader.js"></script>
+	<link rel="import" href="~/components/custom-component.html">
+	<link rel="import" href="~/components/employee-list.html">
+	<style>
+		div {
+			border: 1px solid red;
+		}
+	</style>
+}
+<div class="container">
+	<h1>Cks.Components - Polymer</h1>
+	<div class="row">
+		<div class="col-3">
+			<custom-element></custom-element>
+		</div>
+		<div class="col-3">
+			<employee-list></employee-list>
+		</div>
+	</div>
+</div>
+@section Scripts {
+	<script src="~/js/Cks.js"></script>
+}

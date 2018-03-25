@@ -1,0 +1,6 @@
+Cks.Extensions.Boolean = {
+	apply: () => {
+		
+	},
+}
+

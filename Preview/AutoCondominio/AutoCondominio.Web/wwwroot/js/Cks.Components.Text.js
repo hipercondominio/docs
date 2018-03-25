@@ -1,8 +1,8 @@
 
-/// <reference path="Core.js" />
-/// <reference path="Core.Components.js" />
+/// <reference path="Cks.js" />
+/// <reference path="Cks.Components.js" />
 
-Core.Components.Text = {
+Cks.Components.Text = {
 	/**
 	 * Faz a configuração inicial do plugin para os componentes do mesmo tipo.
 	 * @returns {never}
@@ -17,17 +17,16 @@ Core.Components.Text = {
 	 * @returns {never}
 	 * */
 	transform: (selector) => {
-		var parent = Core.Components;
 		$("cks-text", selector).each(function () {
-			var cks = this;
-			var $cks = $(cks);
-			if (cks.ready)  //já foi transformado
+			var cp = this;
+			var $cks = $(cp);
+			if (cp.ready)  //já foi transformado
 				return;
 
 			///transformação
 			$cks.wrapInner(`<input type="text" class="form-control" />`);
 
-			var $target = $("INPUT", cks);
+			var $target = $("INPUT", cp);
 			var target = $target[0];
 
 			///propriedades
@@ -36,8 +35,10 @@ Core.Components.Text = {
 			var _helpDisabled;
 			var _mask;
 			var _tabindex;
-			Object.defineProperties(cks, {
-				"align": {
+			var _name;
+			var _required;
+			Object.defineProperties(cp, {
+				align: {
 					get: () => {
 						return _align;
 					},
@@ -46,7 +47,7 @@ Core.Components.Text = {
 						$target.css("text-align", v);
 					},
 				},
-				"autocomplete": {
+				autocomplete: {
 					get: () => {
 						return target.autocomplete;
 					},
@@ -54,7 +55,7 @@ Core.Components.Text = {
 						target.autocomplete = v;
 					},
 				},
-				"chars": {
+				chars: {
 					get: () => {
 						return _chars;
 					},
@@ -62,7 +63,7 @@ Core.Components.Text = {
 						_chars = v;
 					},
 				},
-				"disabled": {
+				disabled: {
 					get: () => {
 						return target.disabled;
 					},
@@ -70,18 +71,18 @@ Core.Components.Text = {
 						target.disabled = v;
 					},
 				},
-				"helpDisabled": {
+				helpDisabled: {
 					get: () => {
 						return _helpDisabled;
 					},
 					set: (v) => {
 						_helpDisabled = v;
-						if (cks.disabled) {
-							cks.title = v;
+						if (cp.disabled) {
+							cp.title = v;
 						}
 					},
 				},
-				"list": {
+				list: {
 					get: () => {
 						return target.list;
 					},
@@ -89,16 +90,16 @@ Core.Components.Text = {
 						target.list = v;
 					},
 				},
-				"mask": {
+				mask: {
 					get: () => {
 						return _mask;
 					},
 					set: (v) => {
 						_mask = v;
-						Inputmask(cks.mask).mask(target);
+						Inputmask(cp.mask).mask(target);
 					},
 				},
-				"maxlength": {
+				maxlength: {
 					get: () => {
 						return target.maxlength;
 					},
@@ -106,15 +107,15 @@ Core.Components.Text = {
 						target.maxlength = v;
 					},
 				},
-				"name": {
+				name: {
 					get: () => {
-						return target.name;
+						return _name;
 					},
 					set: (v) => {
-						target.name = v;
+						_name = v;
 					},
 				},
-				"pattern": {
+				pattern: {
 					get: () => {
 						return target.pattern;
 					},
@@ -122,7 +123,7 @@ Core.Components.Text = {
 						target.pattern = v;
 					},
 				},
-				"placeholder": {
+				placeholder: {
 					get: () => {
 						return target.placeholder;
 					},
@@ -130,7 +131,7 @@ Core.Components.Text = {
 						target.placeholder = v;
 					},
 				},
-				"readonly": {
+				readonly: {
 					get: () => {
 						return target.readOnly;
 					},
@@ -138,15 +139,15 @@ Core.Components.Text = {
 						target.readOnly = v;
 					},
 				},
-				"required": {
+				required: {
 					get: () => {
-						return target.required;
+						return _required;
 					},
 					set: (v) => {
-						target.required = v;
+						_required = v;
 					},
 				},
-				"tabIndex": {
+				tabIndex: {
 					get: () => {
 						return $target.attr("tabindex");
 					},
@@ -154,7 +155,7 @@ Core.Components.Text = {
 						$target.attr("tabindex", v);
 					},
 				},
-				"value": {
+				value: {
 					get: () => {
 						return target.value;
 					},
@@ -165,34 +166,33 @@ Core.Components.Text = {
 			});
 
 			///extrair atributos e setar propriedades
-			parent.attr(cks, "align", "string");
-			parent.attr(cks, "autocomplete", "string");
-			parent.attr(cks, "chars", "string");
-			parent.attr(cks, "disabled", "boolean");
-			parent.attr(cks, "help-disabled", "string");
-			parent.attr(cks, "hidden", "boolean");
-			parent.attr(cks, "list", "string");
-			parent.attr(cks, "mask", "string");
-			parent.attr(cks, "maxlength", "string");
-			parent.attr(cks, "name", "string");
-			parent.attr(cks, "pattern", "string");
-			parent.attr(cks, "placeholder", "string");
-			parent.attr(cks, "readonly", "boolean");
-			parent.attr(cks, "required", "string");
-			parent.attr(cks, "tab-index", "number");
-			parent.attr(cks, "value", "string");
+			Cks.attr(cp, "align", String, "left");
+			Cks.attr(cp, "autocomplete", String, false);
+			Cks.attr(cp, "chars", String);
+			Cks.attr(cp, "disabled", Boolean, false);
+			Cks.attr(cp, "help-disabled", String);
+			Cks.attr(cp, "list", String);
+			Cks.attr(cp, "mask", String);
+			Cks.attr(cp, "maxlength", String);
+			Cks.attr(cp, "name", String);
+			Cks.attr(cp, "pattern", String);
+			Cks.attr(cp, "placeholder", String);
+			Cks.attr(cp, "readonly", Boolean, false);
+			Cks.attr(cp, "required", String, false);
+			Cks.attr(cp, "cks:tabindex", Number);
+			Cks.attr(cp, "value", String);
 
 			///métodos
-			cks.focus = () => {
+			cp.focus = () => {
 				$target.focus();
 			}
-			cks.blur = () => {
+			cp.blur = () => {
 				$target.blur();
 			}
 
 			///eventos
-			parent.event(target, "focus", cks);
-			parent.event(target, "blur", cks);
+			Cks.event(target, "focus", cp);
+			Cks.event(target, "blur", cp);
 
 			//eventos internos
 			$cks.on("keypress", function (e) {

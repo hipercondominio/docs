@@ -2,24 +2,24 @@
 	ViewData["Title"] = "Components Page";
 }
 @section Head {
-	<link rel="stylesheet" href="~/css/comp/Core.Components.css" />
-	<link rel="stylesheet" href="~/css/comp/Core.Components.Splitter.css" />
-	<link rel="stylesheet" href="~/css/comp/Core.Components.Select.css" />
-	<link rel="stylesheet" href="~/css/comp/Core.Components.Accordion.css" />
-	<link rel="stylesheet" href="~/css/comp/Core.Components.Collapse.css" />
-	<link rel="stylesheet" href="~/css/comp/Core.Components.Link.css" />
-	<link rel="stylesheet" href="~/css/comp/Core.Components.Breadcrumb.css" />
-	<link rel="stylesheet" href="~/css/comp/Core.Components.NotifyIcon.css" />
-	<link rel="stylesheet" href="~/css/comp/Core.Components.Pager.css" />
-	<link rel="stylesheet" href="~/css/comp/Core.Components.Text.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.Components.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.Components.Splitter.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.Components.Select.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.Components.Accordion.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.Components.Collapse.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.Components.Link.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.Components.Breadcrumb.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.Components.NotifyIcon.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.Components.Pager.css" />
+	<link rel="stylesheet" href="~/css/comp/Cks.Components.Text.css" />
 	<link rel="stylesheet" href="~/css/pages/Components.Index.css" />
 }
-<div class="container">
-
-</div>
+	<div class="container">
+	</div>
 <hr />
 <div class="container">
-	<h1>Core.Components</h1>
+	<h1>Cks.Components</h1>
 	<accordion order="name">
 		<collapse name="Container">
 			<div class="comp-desc">
@@ -467,7 +467,7 @@
 				<br />
 				<div class="row">
 					<div class="col-4">
-						<cks-pager first previous next last records="30" records-page="3" page="2" page-show="3"></cks-pager>
+						<cks-pager first previous next last records="30" records-page="3" page="2"></cks-pager>
 					</div>
 					<div class="col-4">
 						<cks-pager previous next records="10" records-page="2" page="1" page-show="5"></cks-pager>
@@ -789,17 +789,22 @@
 @section Scripts {
 	<script src="~/lib/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 	<script src="~/js/Pages/Components.Index.js"></script>
-	<script src="~/js/Core.js"></script>
-	<script src="~/js/Core.Components.js"></script>
-	<script src="~/js/Core.Components.Splitter.js"></script>
-	<script src="~/js/Core.Components.Select.js"></script>
-	<script src="~/js/Core.Components.Accordion.js"></script>
-	<script src="~/js/Core.Components.Collapse.js"></script>
-	<script src="~/js/Core.Components.Link.js"></script>
-	<script src="~/js/Core.Components.Breadcrumb.js"></script>
-	<script src="~/js/Core.Components.NotifyIcon.js"></script>
-	<script src="~/js/Core.Components.Pager.js"></script>
-	<script src="~/js/Core.Components.Text.js"></script>
+	<script src="~/js/Cks.js"></script>
+	<script src="~/js/Cks.Extensions.js"></script>
+	<script src="~/js/Cks.Extensions.Boolean.js"></script>
+	<script src="~/js/Cks.Extensions.Number.js"></script>
+	<script src="~/js/Cks.Extensions.String.js"></script>
+	<script src="~/js/Cks.Extensions.Math.js"></script>
+	<script src="~/js/Cks.Components.js"></script>
+	<script src="~/js/Cks.Components.Splitter.js"></script>
+	<script src="~/js/Cks.Components.Select.js"></script>
+	<script src="~/js/Cks.Components.Accordion.js"></script>
+	<script src="~/js/Cks.Components.Collapse.js"></script>
+	<script src="~/js/Cks.Components.Link.js"></script>
+	<script src="~/js/Cks.Components.Breadcrumb.js"></script>
+	<script src="~/js/Cks.Components.NotifyIcon.js"></script>
+	<script src="~/js/Cks.Components.Pager.js"></script>
+	<script src="~/js/Cks.Components.Text.js"></script>
 }
 <!--
 //todo: fazer exemplo de estrutura de dados proposta para os controles, de entrada e de saída.

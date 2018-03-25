@@ -1,7 +1,7 @@
-/// <reference path="Core.js" />
-/// <reference path="Core.Components.js" />
+/// <reference path="Cks.js" />
+/// <reference path="Cks.Components.js" />
 
-Core.Components.Splitter = {
+Cks.Components.Splitter = {
 	/**
 	 * Faz a configuração inicial do plugin para os componentes do mesmo tipo.
 	 * @returns {never}
@@ -358,7 +358,7 @@ Core.Components.Splitter = {
 	transform: (selector) => {
 		//hack: adicionar background e alguns comportamentos, como o clique no centro expandir tudo
 		$("cks-splitter", selector).each(function () {
-			var cksSplitter = this;
+			var cp = this;
 			if (this.ready)  //já foi transformado
 				return;
 
@@ -366,38 +366,34 @@ Core.Components.Splitter = {
 
 			///extrair atributos e setar propriedades
 
-			var p = cksSplitter.getAttribute("proportion");
-			if (p == null) {
-				p = "50%,50%";
-			}
-			cksSplitter.proportion = p.split(",");
-			cksSplitter.direction = cksSplitter.getAttribute("direction");
-			cksSplitter.orientation = cksSplitter.getAttribute("orientation");
+			Cks.attr(cp, "proportion", Array, ["50%","50%"]);
+			Cks.attr(cp, "direction", String, "right");
+			Cks.attr(cp, "orientation", String, "vertical");
 
 			var position = null;
-			if (cksSplitter.proportion) {
-				var panelLen = cksSplitter.orientation == 'horizontal' ? cksSplitter.offsetHeight : cksSplitter.offsetWidth;
+			if (cp.proportion) {
+				var panelLen = cp.orientation == 'horizontal' ? cp.offsetHeight : cp.offsetWidth;
 
 				//converter % para px
 				let i = 0;
-				for (let p of cksSplitter.proportion) {
+				for (let p of cp.proportion) {
 					if (p.toString().endsWith("%")) {
 						var prop = parseFloat(p);
 						p = panelLen * prop / 100;
-						cksSplitter.proportion[i] = p;
+						cp.proportion[i] = p;
 					}
 					i++;
 				}
 
-				if (cksSplitter.proportion[0] == "*") {    //painel 1 é o resto do 2
-					position = panelLen - cksSplitter.proportion[1];
+				if (cp.proportion[0] == "*") {    //painel 1 é o resto do 2
+					position = panelLen - cp.proportion[1];
 				} else {
-					position = eval(cksSplitter.proportion[0]);
+					position = eval(cp.proportion[0]);
 				}
 			}
 
-			$(cksSplitter).height(cksSplitter.offsetHeight).split({
-				orientation: cksSplitter.orientation,
+			$(cp).height(cp.offsetHeight).split({
+				orientation: cp.orientation,
 				limit: 1,
 				position: position, // if there is no percentage it interpret it as pixels
 			});

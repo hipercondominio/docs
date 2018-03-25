@@ -1,7 +1,7 @@
-/// <reference path="Core.js" />
-/// <reference path="Core.Components.js" />
+/// <reference path="Cks.js" />
+/// <reference path="Cks.Components.js" />
 
-Core.Components.Pager = {
+Cks.Components.Pager = {
 	/**
 	 * Faz a configuração inicial do plugin para os componentes do mesmo tipo.
 	 * @returns {never}
@@ -16,14 +16,13 @@ Core.Components.Pager = {
 	 * @returns {never}
 	 * */
 	transform: (selector) => {
-		var parent = Core.Components;
 		$("cks-pager", selector).each(function () {
-			var cks = this;
+			var cp = this;
 			if (this.ready)  //já foi transformado
 				return;
 
 			///transformação
-			$(cks).wrapInner(`
+			$(cp).wrapInner(`
 				<nav aria-label="Paginador">
 					<ul class="pagination">
 						<li class="page-item fix" title="primeira página"><a class="page-link first">&laquo;</a></li>
@@ -46,13 +45,13 @@ Core.Components.Pager = {
 			var _recordsPage;  //total de registros por página
 			var _page;  //página atual
 			var _pageShow;  //número de páginas a serem exibidas no pager
-			Object.defineProperties(cks, {
-				"pages": {
+			Object.defineProperties(cp, {
+				pages: {
 					get: () => {
-						return Math.ceil(cks.records / cks.recordsPage);
+						return Math.ceil(cp.records / cp.recordsPage);
 					},
 				},
-				"pageShow": {
+				pageShow: {
 					get: () => {
 						return _pageShow;
 					},
@@ -63,18 +62,18 @@ Core.Components.Pager = {
 						});
 					},
 				},
-				"page": {
+				page: {
 					get: () => {
 						return _page;
 					},
 					set: (v) => {
-						_page = Math.limit(v, 1, cks.pages);
+						_page = Math.limit(v, 1, cp.pages);
 						window.setTimeout(() => {
 							refresh();
 						});
 					},
 				},
-				"recordsPage": {
+				recordsPage: {
 					get: () => {
 						return _recordsPage;
 					},
@@ -85,7 +84,7 @@ Core.Components.Pager = {
 						});
 					},
 				},
-				"records": {
+				records: {
 					get: () => {
 						return _records;
 					},
@@ -96,12 +95,12 @@ Core.Components.Pager = {
 						});
 					},
 				},
-				"first": {
+				first: {
 					get: () => {
 						return _first;
 					},
 					set: (v) => {
-						var $li = $("li:first", cks);
+						var $li = $("li:first", cp);
 						if (v) {
 							$li.removeClass("hide");
 						} else {
@@ -110,12 +109,12 @@ Core.Components.Pager = {
 						_first = v;
 					},
 				},
-				"previous": {
+				previous: {
 					get: () => {
 						return _previous;
 					},
 					set: (v) => {
-						var $li = $("li:nth-of-type(2)", cks);
+						var $li = $("li:nth-of-type(2)", cp);
 						if (v) {
 							$li.removeClass("hide");
 						} else {
@@ -124,12 +123,12 @@ Core.Components.Pager = {
 						_previous = v;
 					},
 				},
-				"next": {
+				next: {
 					get: () => {
 						return _next;
 					},
 					set: (v) => {
-						var $li = $("li:nth-last-of-type(2)", cks);
+						var $li = $("li:nth-last-of-type(2)", cp);
 						if (v) {
 							$li.removeClass("hide");
 						} else {
@@ -138,12 +137,12 @@ Core.Components.Pager = {
 						_next = v;
 					},
 				},
-				"last": {
+				last: {
 					get: () => {
 						return _last;
 					},
 					set: (v) => {
-						var $li = $("li:nth-last-of-type(1)", cks);
+						var $li = $("li:nth-last-of-type(1)", cp);
 						if (v) {
 							$li.removeClass("hide");
 						} else {
@@ -155,14 +154,15 @@ Core.Components.Pager = {
 			});
 
 			///extrair atributos e setar propriedades
-			cks.first = cks.getAttribute("first") == "" ? true : false;
-			cks.previous = cks.getAttribute("previous") == "" ? true : false;
-			cks.next = cks.getAttribute("next") == "" ? true : false;
-			cks.last = cks.getAttribute("last") == "" ? true : false;
-			cks.records = parseInt(cks.getAttribute("records")) || 0;
-			cks.recordsPage = parseInt(cks.getAttribute("records-page")) || 0;
-			cks.page = parseInt(cks.getAttribute("page")) || 1;
-			cks.pageShow = parseInt(cks.getAttribute("page-show")) || 3;
+			Cks.attr(cp, "first", Boolean, true);
+			Cks.attr(cp, "previous", Boolean, true);
+			Cks.attr(cp, "next", Boolean, true);
+			Cks.attr(cp, "last", Boolean, true);
+			Cks.attr(cp, "first", Boolean, true);
+			Cks.attr(cp, "records", Number, 0);
+			Cks.attr(cp, "records-page", Number, 0);
+			Cks.attr(cp, "page", Number, 1);
+			Cks.attr(cp, "page-show", Number, 3);
 
 			///eventos
 			/**
@@ -171,7 +171,7 @@ Core.Components.Pager = {
 			 * @param {number} active  Página atual.
 			 * @returns {never}
 			 */
-			cks.paging = new Function("page", cks.getAttribute("onpaging"));
+			cp.paging = new Function("page", cp.getAttribute("onpaging"));
 
 			///funções internas
 			/**
@@ -180,11 +180,11 @@ Core.Components.Pager = {
 			 */
 			function recalc() {
 				//verificar se a quantidade de páginas desejadas está disponível para mostrar
-				var show = cks.pageShow;
-				if (show > cks.pages)
-					show = cks.pages;
+				var show = cp.pageShow;
+				if (show > cp.pages)
+					show = cp.pages;
 
-				var showed = $("li:not(.fix)", cks).length;  //verificar o número de páginas exibidas
+				var showed = $("li:not(.fix)", cp).length;  //verificar o número de páginas exibidas
 				if (showed == show)
 					return;  //nada mudou
 
@@ -194,9 +194,9 @@ Core.Components.Pager = {
 				}
 
 				//preencher
-				$("li:not(.fix)", cks).remove();
+				$("li:not(.fix)", cp).remove();
 				for (let i = 1; i <= show; i++) {
-					$("li:nth-last-of-type(2)", cks).before($tpln.clone());
+					$("li:nth-last-of-type(2)", cp).before($tpln.clone());
 				}
 
 				refresh();
@@ -208,9 +208,9 @@ Core.Components.Pager = {
 			 */
 			function refresh() {
 				//verificar se a quantidade de páginas desejadas está disponível para mostrar
-				var show = cks.pageShow;
-				if (show > cks.pages)
-					show = cks.pages;
+				var show = cp.pageShow;
+				if (show > cp.pages)
+					show = cp.pages;
 
 				//ajustar o ponto médio da página ativa
 				var midPoint = show / 2;
@@ -221,25 +221,25 @@ Core.Components.Pager = {
 				}
 
 				//ajustar páginas limite mínimo e máximo
-				var start = Math.limit(cks.page - midPoint, 1, cks.pages - cks.pageShow + 1);
+				var start = Math.limit(cp.page - midPoint, 1, cp.pages - cp.pageShow + 1);
 				var end = start + show - 1;
 
 				//remover antigo template de active
-				$("li.active", cks).replaceWith($tpln.clone());
+				$("li.active", cp).replaceWith($tpln.clone());
 
 				//numerar
 				var p = 0;  //indexador de elementos página 'li'
 				for (let i = start; i <= end; i++) {  //percorrer número inicial e final, numerando
-					let li = $("li:not(.fix)", cks)[p];
-					if (i == cks.page) {  //chegou na página ativa, mudar template
+					let li = $("li:not(.fix)", cp)[p];
+					if (i == cp.page) {  //chegou na página ativa, mudar template
 						$(li).replaceWith($tpla.clone());
-						li = $("li:not(.fix)", cks)[p];  //recuperar item pois foi desvinculado
+						li = $("li:not(.fix)", cp)[p];  //recuperar item pois foi desvinculado
 					}
 					$("a", li).text(i);
 					p++;
 				}
-				$("li", cks).off("click");
-				$("li", cks).on("click", pageClick);
+				$("li", cp).off("click");
+				$("li", cp).on("click", pageClick);
 			}
 
 			/**
@@ -248,17 +248,17 @@ Core.Components.Pager = {
 			function pageClick(e) {
 				var $link = $(e.target);
 				if ($link.hasClass("first")) {
-					cks.page = 1;
+					cp.page = 1;
 				} else if ($link.hasClass("previous")) {
-					--cks.page;
+					--cp.page;
 				} else if ($link.hasClass("next")) {
-					++cks.page;
+					++cp.page;
 				} else if ($link.hasClass("last")) {
-					cks.page = cks.pages;
+					cp.page = cp.pages;
 				} else {
-					cks.page = parseInt(e.target.innerText);
+					cp.page = parseInt(e.target.innerText);
 				}
-				cks.paging(cks.page);
+				cp.paging(cp.page);
 			}
 
 

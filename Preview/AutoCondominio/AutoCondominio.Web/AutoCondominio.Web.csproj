@@ -6,7 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\components\custom-component.html" />
+    <Content Remove="wwwroot\components\employee-list.html" />
+    <Content Remove="wwwroot\css\comp\Cks.Components.Splitter.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="file.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\comp\Cks.Components.Splitter.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,6 +26,15 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\components\employee-list.html">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wwwroot\components\custom-component.html">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -439,7 +458,7 @@
     <None Include="wwwroot\lib\bootstrap\_plugins\callout.rb" />
     <None Include="wwwroot\lib\bootstrap\_plugins\example.rb" />
     <None Include="wwwroot\lib\bootstrap\_plugins\markdown-block.rb" />
-    <None Include="wwwroot\css\comp\Core.Components.Splitter.css" />
+    <None Include="wwwroot\css\comp\Cks.Components.Splitter.css" />
     <None Include="wwwroot\lib\inputmask\dist\inputmask\bindings\inputmask.binding.js" />
     <None Include="wwwroot\lib\inputmask\dist\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
     <None Include="wwwroot\lib\inputmask\dist\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.js" />

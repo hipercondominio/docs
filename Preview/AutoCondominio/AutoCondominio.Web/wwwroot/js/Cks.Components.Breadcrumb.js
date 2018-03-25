@@ -1,7 +1,7 @@
-/// <reference path="Core.js" />
-/// <reference path="Core.Components.js" />
+/// <reference path="Cks.js" />
+/// <reference path="Cks.Components.js" />
 
-Core.Components.Breadcrumb = {
+Cks.Components.Breadcrumb = {
 	/**
 	 * Faz a configuração inicial do plugin para os componentes do mesmo tipo.
 	 * @returns {never}
@@ -17,56 +17,58 @@ Core.Components.Breadcrumb = {
 	 * */
 	transform: (selector) => {
 		$("cks-breadcrumb", selector).each(function () {
-			var cks = this;
+			var cp = this;
 			if (this.ready)  //já foi transformado
 				return;
 
 			///transformação
-			var $span = $(cks).append('<span>');
-			for (let el of cks.childNodes) {
+			var $span = $(cp).append('<span>');
+			for (let el of cp.childNodes) {
 				if (el.nodeType == 3)  //texto
 					el.remove();
 			}
-			
+
 
 			///propriedades
 			var _active;
-			Object.defineProperty(cks, "active", {
-				get: () => {
-					return _active;
-				},
-				set: (v) => {
-					cks.lastChild.innerHTML = v;
-					_active = v;  //atualizar valor novo
-				},
-			});
-
 			var _delimiter;
-			Object.defineProperty(cks, "delimiter", {
-				get: () => {
-					return _delimiter;
+
+			Object.defineProperties(cp, {
+				active: {
+					get: () => {
+						return _active;
+					},
+					set: (v) => {
+						cp.lastChild.innerHTML = v;
+						_active = v;  //atualizar valor novo
+					},
 				},
-				set: (v) => {
-					let content;
-					if (v.startsWith("url("))
-						content = v;
-					else
-						content = `'${v}'`;
-					$("head").append(`
+				delimiter: {
+					get: () => {
+						return _delimiter;
+					},
+					set: (v) => {
+						let content;
+						if (v.startsWith("url("))
+							content = v;
+						else
+							content = `'${v}'`;
+						$("head").append(`
 						<style id="breadcrumb" type="text/css">
 							cks-breadcrumb > cks-link:after {
 								content: ${content};
 							}
 						</style>
 					`);
-					_delimiter = v;  //atualizar valor novo
+						_delimiter = v;  //atualizar valor novo
+					},
 				},
 			});
 
-
 			///extrair atributos e setar propriedades
-			cks.delimiter = cks.getAttribute("delimiter");
-			cks.active = cks.getAttribute("active");
+			Cks.attr(cp, "delimiter", String, "/");
+			Cks.attr(cp, "active", String, true);
+
 
 			this.ready = true;
 		});
