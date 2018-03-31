@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Cks.Data\Cks.Data.csproj" />
+    <ProjectReference Include="..\src\Cks\Cks.csproj" />
+  </ItemGroup>
+
+</Project>
