@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using AutoMapper;
 
 namespace Cks.Business
 {
@@ -12,7 +14,7 @@ namespace Cks.Business
 		public string Nome { get; set; }
 		public string Cpf { get; set; }
 		public string Rg { get; set; }
-		public bool Sexo { get; set; }
+		public int? Sexo { get; set; }
 		public DateTime DtaNascimeno { get; set; }
 		public string Mail { get; set; }
 		public string Senha { get; set; }
@@ -35,7 +37,7 @@ namespace Cks.Business
 
 
 
-		public void Cadastrar(int idResponsavel)
+		public void Create(int idResponsavel)
 		{
 			var context = new Cks.Data.Contexts.DefaultContext();
 			Pessoa dtPessoa = new Cks.Data.Models.Pessoa();
@@ -69,7 +71,7 @@ namespace Cks.Business
 			context.Endereco.Add(dtEndereco);
 			context.SaveChanges();
 		}
-		public static void Alterar(int idPessoa)
+		public static void Update(int idPessoa)
 		{
 			var context = new Cks.Data.Contexts.DefaultContext();
 			Pessoa dtPessoa = new Cks.Data.Models.Pessoa();
@@ -104,41 +106,26 @@ namespace Cks.Business
 			context.Endereco.Update(dtEndereco);
 			context.SaveChanges();
 		}
-
-		public static void Leitura(int idPessoa)
+	
+		public Pessoa FindById(int id)
 		{
-			var context = new Cks.Data.Contexts.DefaultContext();
-			Pessoa dtPessoa = new Cks.Data.Models.Pessoa();
-			this.idPessoa = dtPessoa.IdPessoa;
-			this.IdResponsavel = dtPessoa.IdResponsavel;
-			this.Nome = dtPessoa.Nome;
-			this.Cpf = dtPessoa.Cpf;
-			this.Rg = dtPessoa.Rg;
-			this.Sexo = dtPessoa.Sexo;
-			this.DtaNascimeno = dtPessoa.DtaNascimeno;
-			this.Mail = dtPessoa.Mail;
-			this.Senha = dtPessoa.Senha; 	
+			var context = new Data.Contexts.DefaultContext();
+			var dbPessoa = context.Pessoa.FirstOrDefault(x => x.IdPessoa == id);
+			var pessoa = Mapper.Map<Pessoa>(dbPessoa);
+			return pessoa;
 
-			Endereco dtEndereco = new Cks.Data.Models.Endereco();
-			dtEndereco.IdResponsavel = this.IdResponsavel;
-			dtEndereco.DtaInicio = DateTime.Now;
-			dtEndereco.DtaUpdate = DateTime.Now;
-			dtEndereco.Delet = false;
-			dtEndereco.Cep = this.Cep;
-			dtEndereco.Logradouro = this.Logradouro;
-			dtEndereco.Numero = this.Numero;
-			dtEndereco.Bairro = this.Bairro;
-			dtEndereco.Cidade = this.Cidade;
-			dtEndereco.Estado = this.Estado;
-			//ver com o markinho
-			//Contato dtContato = new Cks.Data.Models.Contato();
-
-			context.Pessoa.Find(dtPessoa);
-			context.Endereco.Find(dtEndereco);
-			context.SaveChanges();
 		}
 
-		public List<Usuario> Usuarios;
+		public IQueryable<Pessoa> Find(Pessoa pessoa)
+		{
+
+			var context = new Data.Contexts.DefaultContext();
+			var dbPessoa = context.Pessoa.Where(x =>
+					(pessoa.Nome == null || x.Nome.Contains(pessoa.Nome))
+				);
+			var pessoas = Mapper.Map<IEnumerable<Pessoa>>(dbPessoa).AsQueryable();
+			return pessoas;
+		}
 
 	}
 }
